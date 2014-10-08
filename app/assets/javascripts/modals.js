@@ -1,6 +1,8 @@
 chorus.Modal = chorus.views.Base.extend({
+
     constructorName: "Modal",
-    verticalPadding: 30,
+    // verticalpadding = distance from top of screen
+    verticalPadding: 100,
     focusSelector: 'input:eq(0)',
 
     launchModal: function() {

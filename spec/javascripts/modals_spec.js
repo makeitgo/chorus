@@ -96,7 +96,7 @@ describe("chorus.Modal", function() {
 
                 it("sets the dialog.top to 30", function() {
                     this.modal.resize();
-                    expect(cssCalls()).toContain(["top", "30px"]);
+                    expect(cssCalls()).toContain(["top", "100px"]);
                 });
 
 
