@@ -26,7 +26,7 @@ $bright-grey:       rgb(88, 89, 95);
 $greyish-yellow:    rgb(204, 204, 200);
 $light-grey-yellow: rgb(243, 243, 242);
 $light-gray:        rgb(234, 238, 241);
-$shadow-gray:		darken($light-gray, 7%);
+$shadow-gray:		darken($light-gray, 10%);
 $charcoal:          #464646;
 
 //transparent variants
@@ -94,7 +94,7 @@ $border-canon: $border-width solid $border-color;
 $dark-border-canon: $border-width solid $border-color-dark;
 $strong-border-canon: 5px solid $color-text3;
 
-$shadow-canon: 1px 2px 2px 0px $shadow-color;
+$shadow-canon: 2px 2px 3px 0px $shadow-color;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -147,7 +147,7 @@ $icon-image-width : 35px;
 $icon-image-height : 35px;
 $large-image-width : 45px;
 $large-image-height : 45px;
-$activity-gutter: 15px;
+$activity-gutter: 10px;
 $dialog-padding : 15px;
 $breadcrumbs-height: 32px;
 $help-pill-width: 34px;
@@ -181,6 +181,8 @@ $drag-z-index: 9999;
 $medium-font: 14px;
 $small-font: 12px;
 $smallest-font: 10px;
+
+$fontsize-workspace-name: 16px;
 
 ///////////////////////////////////////////////////////
 // TODO: Reconcile these with above values
@@ -325,7 +327,8 @@ $action-bar-secondary-background-color: $light-blue;
 @mixin font-primary-link {
     color: $brand;
     font-size: 18px;
-    font-weight: $light;
+/*     font-weight: $light; */
+    font-weight: normal;
 }
 
 @mixin font-action-link {

@@ -52,7 +52,7 @@ $system-action-color: #7C7D7D;
     }
 
     .activity_item {
-        padding: $activity-gutter;
+        padding: 0px $activity-gutter $activity-gutter 0px;
         position: relative;
         overflow: visible;
     }
