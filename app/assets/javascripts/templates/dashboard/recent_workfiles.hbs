@@ -12,7 +12,8 @@
                 </div>
             </div>
         </div>
-
+        
+        <div class="recent_workfiles_list">
         {{#if modelLoaded}}
             {{#if hasModels}}
                 <ul class="list selectable">
@@ -42,11 +43,19 @@
                 <div>You do not currently have any recent items.</div>
             {{/if}}
         {{/if}}
-    </div>
-    <div id="recent_workfiles_configuration">
-        <div class="mask">
+        </div>
+    
+        <div id="recent_workfiles_configuration" class="widget_configuration">
+            <div class="mask"> </div>
+        
             <div class="config_content">
-                <div class="title">{{t "dashboard.recent_workfiles.name"}} {{t "dashboard.configuration"}}</div>
+            
+                <div class="module_sub_header">
+                    <div class="title">{{t "dashboard.recent_workfiles.name"}} {{t "dashboard.configuration"}}</div>
+                </div>
+        
+        
+<!--                 <div class="title">{{t "dashboard.recent_workfiles.name"}} {{t "dashboard.configuration"}}</div> -->
                 <div>Number of items to display:</div>
                 <div>
                     <select class="recent_items_select">
@@ -66,5 +75,7 @@
                 </div>
             </div>
         </div>
+    <!-- </div> -->
+    
     </div>
 </div>
