@@ -12,6 +12,8 @@ $dashboard-module-title-height: 35px;
 $dashboard-module-padding: 10px;
 $title-height: $dashboard-module-title-height - $dashboard-module-padding;
 
+/* dashboard PAGETYPE */
+/* layout rules       */
 div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
     #guts {
         padding: ($header-height + $subheader-height) $page-margin-right 10px $page-margin-left;
@@ -30,16 +32,48 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
         @include after-clearfix();
     }
 }
+/* END dashboard PAGETYPE > layout */
+
+/* ************ */
+/* dashboard PAGETYPE */
+/* heading            */
+/* its mostly a regular page heading, but w/edit button on right */
+.dashboard_sub_header {
+    .right {
+        float: right;
+    }
+    .button {
+        background-color: $shaded-background-color;
+        display: inline-block;
+        cursor: pointer;
+        i {
+            /* covers the FA and OI glyphs used, such as the cog */
+            color: $color-text3;
+            font-size: 13px;
+            line-height: $height-button-widgetshell;
+        }
+    }
+    
+    .configure {
+        /* the configure button */
+        width: 35px;
+        @include panel-button($height-button-widgetshell);
+    }
+}
+/* END: dashboard PAGETYPE > heading */
+
 
 .dashboard_module {
 
 /* ************ */
+/* dashboard_module >  */
 /* widget: activity stream */
 
     .activity_list {
         max-height: 450px;
         overflow-y: auto;
     }
+
 /* END: activity stream */
 
     .no_activity {
@@ -68,6 +102,7 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
     }
 
 /* ************ */
+/* dashboard_module >  */
 /* widget: site snapshot */
 
     &.dashboard_site_snapshot {
@@ -79,41 +114,42 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
                 margin-right: 10px;
                 &:last-child { margin-right: 0; }
 
-                .square {
+                .squareish {
                     width: 220px;
                     height: 140px;
-
-                    .total {
-                        padding-top: 10px;
-                        @include dashboard-huge;
-                    }
-
-                    .model {
-                        @include dashboard-snapshot-model;
-                        padding-bottom: 25px;
-                    }
-
-                    .increment {
-                        @include secondary-text-small;
-                    }
-
-                    $amber: rgb(242, 171, 13);
-                    $green: rgb(86, 174, 0);
-                    $blue: rgb(0, 144, 240);
-                    $purple: rgb(158, 27, 116);
-
-                    &.workspace .total { color: $amber; }
-                    &.associated_dataset .total { color: $green; }
-                    &.workfile .total { color: $blue; }
-                    &.user .total { color: $purple; }
                 }
             }
         }
+
+       .total {
+            padding-top: 10px;
+            @include dashboard-huge;
+        }
+
+        .model {
+            @include dashboard-snapshot-model;
+            padding-bottom: 25px;
+        }
+
+        .increment {
+            @include secondary-text-small;
+        }
+
+        $amber: rgb(242, 171, 13);
+        $green: rgb(86, 174, 0);
+        $blue: rgb(0, 144, 240);
+        $purple: rgb(158, 27, 116);
+
+        .workspace .total { color: $amber; }
+        .associated_dataset .total { color: $green; }
+        .workfile .total { color: $blue; }
+        .user .total { color: $purple; }
     }
 /* END: site snapshot */
 
 
 /* ************ */
+/* dashboard_module >  */
 /* widget: workspace activity chart */
 
     &.dashboard_workspace_activity {
@@ -131,6 +167,7 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
 
 
 /* ************ */
+/* dashboard_module >  */
 /* widget: recent workfiles */
 
     &.dashboard_recent_workfiles {
@@ -152,14 +189,14 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
                     }
                 }
             }
-            
+
                 .file_name {
-                    padding: 1px 0 0 10px;
+                    padding: 0 0 0 10px;
                 }
 
                 .workfile_link {
                     @include font-primary-link;
-                    padding: 0 0 3px 0;
+                    padding: 0 0 1px 0;
                     width: 500px;
                 }
 
@@ -172,7 +209,7 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
                 .workspace_link {
                     @include font-secondary-link;
                     font-weight: normal;
-                    max-width: 400px;
+                    max-width: 420px;
                 }
                 
                 /* common handling for long names */
@@ -190,12 +227,11 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
                     @include secondary-text-small;
                 }    
         }
-        
+
         .recent_workfiles_list {
             border-top: $border-canon;
             border-bottom: $border-canon;
         }
-
         
 /*         #recent_workfiles_configuration { */
 /*             display:none; */
@@ -214,6 +250,7 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
 /*                 margin: 10px; */
 /*                 padding: 10px; */
 /*             } */
+
 /*             .button_row { */
 /*                 padding-top: 15px; */
 /*             } */
@@ -224,7 +261,6 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
 
 
     .module_header {
-
         &.activity_list_header {
             .menus {
                 float: none;
@@ -233,13 +269,14 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
             }
         }
     }
-}
+/* } */
 
 
 /* ************ */
-/* widget: styles for display when configuring the widget */
+/* dashboard_module >  */
+/* widget: styles for panel used in configuring the widget */
 
-.widget_configuration {
+    .widget_configuration {
     display: none;
     
     .mask {
@@ -262,13 +299,13 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
 
     .config_content {
         position: absolute;
-/*         top: 0px; */
+        /*         top: 0px; */
         /* position to defeat the padding of the widget shell... */
         top: -$dashboard-module-padding;
         left: -$dashboard-module-padding;
                 
         width: 100%;
-         /* defeat the existing padding */
+        /* defeat the existing padding */
         /*         margin: 0px -$dashboard-module-padding 0px -$dashboard-module-padding; */
         
         /* match padding of normal widget shell content */
@@ -286,7 +323,7 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
         padding-bottom: $dashboard-module-padding;
     }
         
-}
+    }
 /* END: widget configuration */
 
 
@@ -294,39 +331,13 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
 /*     padding-bottom: 7px; */
 /* } */
 
-
-/* ************ */
-/* dashboard heading/title */
-/* regular page heading, but w/edit button on right */
-
-.dashboard_sub_header {
-    .right {
-        float: right;
-    }
-    .button {
-        background-color: $shaded-background-color;
-        display: inline-block;
-        cursor: pointer;
-        i {
-            /* covers the FA and OI glyphs used, such as the cog */
-            color: $color-text3;
-            font-size: 13px;
-            line-height: $height-button-widgetshell;
-        }
-    }
-    .configure {
-        /* the configure button */
-        width: 35px;
-        @include panel-button($height-button-widgetshell);
-    }
 }
 
-/* END: dashboard heading/title */
-
 
 /* ************ */
+/* dashboard_module >  */
 /* rules for general dashboard widget */
-/* provides a general style for a widget shell with header, title, content */
+/* provides a general style for a widget shell with common elements */
 
 .dashboard_module {
 
@@ -335,7 +346,8 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
     border: $border-canon;
     @include border-radius(3px);
     border-top-color: $border-color-dark;
-
+    
+    /* .right section contains shell buttons, e.g. configure */
     .right {
         float: right;
     }
@@ -346,25 +358,30 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
         margin-right: 3px;
         cursor: pointer;
         
-
-        /* covers the FA and OI glyphs used, such as the cog */
+        /* covers the FA and OI glyphs used; i.e the cog */
         i {
             color: $color-text3;
             font-size: 12px;
             line-height: $height-button-widgetshell;
         }
+        
+        /* remove rightside margin on the rightmost button so that it is flush right */
+        &:last-child {
+            margin-right: 0px;
+        }
     }
     
     /* remove rightside margin on the rightmost button so that it is flush right */
-    .button:last-child {
-        margin-right: 0px;
-    }
+    /* .button:last-child { */
+    /*      */
+    /* } */
 
     /* the configure button */
     .configure {
         width: 35px;
         @include panel-button($height-button-widgetshell);
     }
+
 
     .module_header {
         min-height: $title-height + $dashboard-module-padding;
@@ -376,8 +393,8 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
             height: $title-height;
             line-height: $title-height;
         }
-}
-
+    }
+    
 /* rules for the recent activity hovering list that is part of the workspace cards */
 .tooltip {
         
@@ -399,6 +416,9 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
         }
     }
 }
+
+}
+
 
 /* workspace chart: card of workspace details that displays on hover */
 $padding-side-canon: 10px;
@@ -443,6 +463,7 @@ $padding-bottom-canon: 10px;
             @include font-normal-gamma;
         }
 	}
+}
 
 $app-tip-text: $color-text3;
 
@@ -470,8 +491,6 @@ $app-tip-text: $disabled-text;
     p {
         color: $app-tip-text;
     }
-}
-
 }
 
 /* END: general dashboard widget */
