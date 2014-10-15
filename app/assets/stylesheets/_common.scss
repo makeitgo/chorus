@@ -335,6 +335,10 @@ $action-bar-secondary-background-color: $light-blue;
     color: $color-text2;
 }
 
+/* primary link */
+/* used for the name of items in list */
+/* workspaces, files, etc. */
+
 @mixin font-primary-link {
     color: $brand;
     font-size: 18px;
