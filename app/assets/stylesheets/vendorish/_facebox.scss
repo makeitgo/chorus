@@ -61,7 +61,7 @@
     left: 0px;
     height: 100%;
     width: 100%;
-    opacity: 0.42 !important;
+    background-color: $lightbox-overlay-color !important;
 }
 
 .facebox_hide {
@@ -69,6 +69,6 @@
 }
 
 .facebox_overlayBG {
-    background-color: #000;
+   /*  background-color: #000; */
     z-index: $dialog-overlay-z-index;
 }
