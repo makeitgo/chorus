@@ -50,7 +50,7 @@ chorus.views.DashboardRecentWorkfiles = chorus.views.DashboardModule.extend({
         event.preventDefault();
         this.$('#recent_workfiles_configuration').fadeIn("fast");
         _.defer(_.bind(function () {
-            this.$('#recent_workfiles_configuration .mask').css('height', this.$('#recent_workfiles_main_content').height() + 20 + 'px');
+//             this.$('#recent_workfiles_configuration .mask').css('height', this.$('#recent_workfiles_main_content').height() + 20 + 'px');
             chorus.styleSelect(this.$(".recent_items_select"));
         }, this));
         this.$(".recent_items_select").val(this.$('#recent_workfiles_main_content li').length);
