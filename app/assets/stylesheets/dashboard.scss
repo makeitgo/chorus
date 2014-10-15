@@ -6,7 +6,6 @@
 /* e.g. configure button */
 $height-button-widgetshell: 25px;
 
-
 div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
     #guts {
         padding: ($header-height + $subheader-height) $page-margin-right 10px $page-margin-left;
@@ -224,6 +223,8 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
 .dashboard_sub_header, .dashboard_module {
     .right {
         float: right;
+    }
+    
         .button {
             background-color: $shaded-background-color;
             display: inline-block;
@@ -244,7 +245,7 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
             width: 80px;
             @include panel-button($height-button-widgetshell);
         }
-    }
+    
 }
 
 /* rules for the recent activity hovering list that is part of the workspace cards */
