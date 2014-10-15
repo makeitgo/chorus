@@ -314,7 +314,6 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
             line-height: $height-button-widgetshell;
         }
     }
-    
     .configure {
         /* the configure button */
         width: 35px;
@@ -377,6 +376,7 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
             height: $title-height;
             line-height: $title-height;
         }
+}
 
 /* rules for the recent activity hovering list that is part of the workspace cards */
 .tooltip {
@@ -398,7 +398,6 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
             }
         }
     }
-
 }
 
 /* workspace chart: card of workspace details that displays on hover */
