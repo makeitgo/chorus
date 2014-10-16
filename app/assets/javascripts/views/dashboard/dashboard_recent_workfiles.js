@@ -48,7 +48,8 @@ chorus.views.DashboardRecentWorkfiles = chorus.views.DashboardModule.extend({
 
     showOptions: function(event) {
         event.preventDefault();
-        this.$('#recent_workfiles_configuration').fadeIn("fast");
+        this.$('#recent_workfiles_configuration').fadeIn(180);
+
         _.defer(_.bind(function () {
 //             this.$('#recent_workfiles_configuration .mask').css('height', this.$('#recent_workfiles_main_content').height() + 20 + 'px');
             chorus.styleSelect(this.$(".recent_items_select"));
