@@ -6,6 +6,10 @@
 /* e.g. configure button */
 $height-button-widgetshell: 25px;
 
+$dashboard-module-title-height: 35px;
+$dashboard-module-padding: 10px;
+$title-height: $dashboard-module-title-height - $dashboard-module-padding;
+
 div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
     #guts {
         padding: ($header-height + $subheader-height) $page-margin-right 10px $page-margin-left;
@@ -26,11 +30,8 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
 }
 
 .dashboard_module {
-    $dashboard-module-title-height: 35px;
-    $dashboard-module-padding: 10px;
-    $title-height: $dashboard-module-title-height - $dashboard-module-padding;
 
-    padding: $dashboard-module-padding;
+    padding: $dashboard-module-padding $dashboard-module-padding ($dashboard-module-padding * 1.5) $dashboard-module-padding;
     margin-top: 20px;
     border: $border-canon;
     @include border-radius(3px);
@@ -45,7 +46,7 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
 
     .activity_list {
         max-height: 450px;
-        overflow-y: scroll;
+        overflow-y: auto;
     }
 
     .no_activity {
@@ -87,10 +88,10 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
 
                 .square {
                     width: 220px;
-                    height: 160px;
+                    height: 140px;
 
                     .total {
-                        padding-top: 15px;
+                        padding-top: 10px;
                         @include dashboard-huge;
                     }
 
@@ -116,6 +117,8 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
             }
         }
     }
+/* END: site snapshot */
+
 
 /* ****** */
 /* widget: workspace activity chart */
@@ -131,6 +134,8 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
             }
         }
     }
+/* END: workspace activity chart */
+
 
 /* ****** */
 /* widget: recent workfiles */
@@ -208,17 +213,20 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
 /*                 padding-top: 15px; */
 /*             } */
 
-        }
+        }   
     }
+/* END: recent workfiles */
+
 
     .module_header {
-        min-height: $title-height;
+        min-height: $title-height + $dashboard-module-padding;
         line-height: $title-height;
 
         &.activity_list_header {
             .menus {
                 float: none;
                 padding-top: 5px;
+                padding-bottom: 5px;
             }
         }
     }
@@ -231,44 +239,44 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
 .widget_configuration {
     display: none;
     
-            .mask {
-                position: absolute;
-                
-                /* defeat the padding of the widget shell */
-                top: -10px;
-                left: -10px;
-                /* and add to cover the shell's padding */
-                padding-bottom: 2px;
-                padding-right: 20px;
-                
-                background-color: $lightbox-overlay-color;
+		.mask {
+			position: absolute;
 
-                width: 100%;
-                height: 100%;
-                
-                @include border-radius(3px);
-            }
+			/* defeat the padding of the widget shell */
+			top: -$dashboard-module-padding;
+			left: -$dashboard-module-padding;
 
-            .config_content {
-                position: absolute;
-                top: 0px;
-                
-                width: 100%;
-                background-color: #FFFFFF;
-                /* defeat the existing padding */
-                margin: -10px -10px 0 -10px;
-                /* match padding of normal widget shell content */
-                padding: 10px;
-                
-            }
+			width: 100%;
+			height: 100%;
+			
+			/* & add to cover the shell's padding */
+			padding-bottom: $dashboard-module-padding * 2;
+			padding-right: $dashboard-module-padding * 2;
+			
+			background-color: $lightbox-overlay-color;
+			@include border-radius($default-border-radius);
+		}
+
+		.config_content {
+			position: absolute;
+			top: 0px;
+			
+			width: 100%;
+			 /* defeat the existing padding */
+			margin: 0 -$dashboard-module-padding 0 -$dashboard-module-padding;
+			/* match padding of normal widget shell content */
+			padding: $dashboard-module-padding;
+		   
+			background-color: #FFFFFF;
+			@include border-radius($default-border-radius);
+		}
+
+		.button_row {
+			height: 50px;
+			padding-top: 10px;
+			padding-bottom: 10px;
+		}
             
-
-            .button_row {
-                padding-top: 10px;
-                padding-bottom: 15px;
-            }
-            
-
 }
 
 .module_sub_header {
