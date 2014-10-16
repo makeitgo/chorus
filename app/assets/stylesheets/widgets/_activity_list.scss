@@ -28,7 +28,7 @@ $system-action-color: #7C7D7D;
 
     .more_items {
         font-size: 12px;
-        padding: $activity-gutter $big-gutter;
+        padding: $activity-gutter 0;
         text-align: center;
 
         a {
@@ -241,8 +241,9 @@ li .activity_content,
 }
 
 .activity_list.dashboard {
-    padding-top: $activity-gutter;
-
+	padding-top: $activity-gutter;
+	border-top: $border-canon;
+	border-bottom: $border-canon;
     .heading {
         display: none;
     }
