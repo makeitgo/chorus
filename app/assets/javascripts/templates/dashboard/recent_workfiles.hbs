@@ -1,5 +1,4 @@
-<!-- <div style="position: relative;"> -->
-<div>
+<div class="dashboard_widget">
     <div id="recent_workfiles_main_content">
         <div class="module_sub_header">
             <div class="title">{{t "dashboard.recent_workfiles.name"}}</div>
@@ -7,7 +6,7 @@
                 <div class="button clear_list">
                     {{t "dashboard.recent_workfiles.clear.button"}}
                 </div>
-                <div class="button configure widget">
+                <div class="button configure configure_widget">
                     <i class="oi" data-glyph="cog"></i>
                 </div>
             </div>
@@ -46,17 +45,15 @@
         </div>
     
         <div id="recent_workfiles_configuration" class="widget_configuration">
-            <div class="mask"> </div>
+            <div class="mask"></div>
         
             <div class="config_content">
             
                 <div class="module_sub_header">
                     <div class="title">{{t "dashboard.recent_workfiles.name"}} {{t "dashboard.configuration"}}</div>
                 </div>
-        
-        
-<!--                 <div class="title">{{t "dashboard.recent_workfiles.name"}} {{t "dashboard.configuration"}}</div> -->
-                <div>Number of items to display:</div>
+
+                <div>{{t "dashboard.recent_workfiles.config.items.label"}}</div>
                 <div>
                     <select class="recent_items_select">
                         <option value="5">5</option>
