@@ -26,7 +26,7 @@ chorus.views.DashboardRecentWorkfiles = chorus.views.DashboardModule.extend({
         this.resource = this.collection = new chorus.collections.WorkfileSet(workfiles);
         this.render();
         if (this.$('#recent_workfiles_configuration').is(':visible')) {
-            this.$('#recent_workfiles_configuration').fadeOut("fast");
+			this.$('#recent_workfiles_configuration').fadeOut(140);
         }
     },
 
@@ -48,7 +48,8 @@ chorus.views.DashboardRecentWorkfiles = chorus.views.DashboardModule.extend({
 
     showOptions: function(event) {
         event.preventDefault();
-        this.$('#recent_workfiles_configuration').fadeIn("fast");
+        this.$('#recent_workfiles_configuration').fadeIn(180);
+
         _.defer(_.bind(function () {
 //             this.$('#recent_workfiles_configuration .mask').css('height', this.$('#recent_workfiles_main_content').height() + 20 + 'px');
             chorus.styleSelect(this.$(".recent_items_select"));
@@ -58,7 +59,8 @@ chorus.views.DashboardRecentWorkfiles = chorus.views.DashboardModule.extend({
 
     hideOptions: function(event) {
         event.preventDefault();
-        this.$('#recent_workfiles_configuration').fadeOut("fast");
+        this.$('#recent_workfiles_configuration').fadeOut(140);
+
     },
 
     saveOptions: function(event) {
