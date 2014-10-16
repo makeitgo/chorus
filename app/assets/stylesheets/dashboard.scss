@@ -314,10 +314,11 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
         
     }
 
-    .button_row {
-        height: 50px;
-        padding-top: 10px;
-        padding-bottom: 10px;
+
+    .button_row {     
+        margin-top: 20px;
+        padding-top: $dashboard-module-padding;
+        padding-bottom: $dashboard-module-padding;
     }
         
 }
