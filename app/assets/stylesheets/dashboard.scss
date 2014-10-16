@@ -63,27 +63,17 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
 /* END: dashboard PAGETYPE > heading */
 
 
+
 .dashboard_module {
-/* 
-
-    padding: $dashboard-module-padding $dashboard-module-padding ($dashboard-module-padding * 1.5) $dashboard-module-padding;
-    margin-top: 20px;
-    border: $border-canon;
-    @include border-radius(3px);
-    border-top-color: $border-color-dark;
-
- */
 
 /* ************ */
-/* dashboard_module >  */
+/* A dashboard_module >  */
 /* widget: activity stream */
 
     .activity_list {
         max-height: 450px;
-/*         overflow-y: scroll; */
         overflow-y: auto;
     }
-
 /* END: activity stream */
 
     .no_activity {
@@ -111,8 +101,9 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
         letter-spacing: normal;
     }
 
+
 /* ************ */
-/* dashboard_module >  */
+/* A dashboard_module >  */
 /* widget: site snapshot */
 
     &.dashboard_site_snapshot {
@@ -161,7 +152,7 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
 
 /* ************ */
 /* dashboard_module >  */
-/* widget: workspace activity chart */
+/* widget: workspace activity/most active chart */
 
     &.dashboard_workspace_activity {
         .chart {
@@ -178,7 +169,7 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
 
 
 /* ************ */
-/* dashboard_module >  */
+/* A dashboard_module >  */
 /* widget: recent workfiles */
 
     &.dashboard_recent_workfiles {
@@ -190,6 +181,11 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
                 width: 75px;
                 @include panel-button($height-button-widgetshell);
                 font-size: 12px;
+            }
+
+            .clear_list {
+                width: 80px;
+                @include panel-button($height-button-widgetshell);
             }
 
             ul li {
@@ -267,7 +263,6 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
 /*             } */
 /*         } */
 
-
     }
 /* END: recent workfiles */
 
@@ -281,15 +276,28 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
             }
         }
     }
+
+
+/* .module_sub_header { */
+/*     padding-bottom: 7px; */
 /* } */
+
+}
 
 
 /* ************ */
-/* dashboard_module >  */
-/* widget: styles for panel used in configuring the widget */
+/* rules for general dashboard widget */
+/* provides a general style for a widget shell with common elements */
+
+
+/* ************ */
+/* dashboard widget general >  */
+/* styles for panel used in configuring the widgets */
+
+.dashboard_module {
 
     .widget_configuration {
-    display: none;
+        display: none;
 
     .mask {
         position: absolute;
@@ -335,19 +343,18 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
         padding-bottom: $dashboard-module-padding;
     }
         
-    }
-/* END: widget configuration */
+}
 
+}
+/* END: widget configuration */
 
 /* .module_sub_header { */
 /*     padding-bottom: 7px; */
 /* } */
 
-}
 
 
 /* ************ */
-/* dashboard_module >  */
 /* rules for general dashboard widget */
 /* provides a general style for a widget shell with common elements */
 
@@ -432,7 +439,10 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
 }
 
 
-/* workspace chart: card of workspace details that displays on hover */
+/* TODO move this to the right location */
+/* in the css file */
+
+/* workspace most active chart: card of workspace details that displays on hover */
 $padding-side-canon: 10px;
 $padding-top-canon: 10px;
 $padding-bottom-canon: 10px;
@@ -477,6 +487,8 @@ $padding-bottom-canon: 10px;
 	}
 }
 
+
+/* ********** */
 $app-tip-text: $color-text3;
 
 /* empty and app-tip needs a better home location. */
@@ -487,6 +499,7 @@ $app-tip-text: $color-text3;
     p {
         color: $disabled-text;
     }
+
 }
 
 /* in-app intrinsic assistance text */
@@ -504,5 +517,6 @@ $app-tip-text: $disabled-text;
         color: $app-tip-text;
     }
 }
+
 
 /* END: general dashboard widget */
