@@ -19,6 +19,10 @@
     height: 100%;
 }
 
+#page > div {
+    margin-bottom: $page-margin-bottom;
+}
+
 #guts {
     @include after-clearfix;
     z-index: $guts-z-index;
