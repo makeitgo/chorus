@@ -649,7 +649,7 @@ $action-bar-secondary-background-color: $light-blue;
     height: $height;
 
     background-color: $shaded-background-color;
-    border: $border-canon;
+    border: $dark-border-canon;
     @include border-radius($default-border-radius);
 
     &:hover {
