@@ -40,11 +40,15 @@ $card-progressbar_zero: rgba(#C0C0C0, 0.5);
             width: 308px
         }
 
-        @media (min-width: 1025px) and (max-width: 1650px) {
+        @media (min-width: 1025px) and (max-width: 1250px) {
             width: 23.7555%;
             min-width: 20%;
         }
 
+        @media (min-width: 1251px) and (max-width: 1650px) {
+            width: 23.7855%;
+        }
+        
         @media (min-width: 1651px) {
             width: 19.0%;
             min-width: 17%;
