@@ -98,6 +98,11 @@ button.modalish, .button_modalish {
 
         &:disabled { background: transparent; }
     }
+    
+    /* override min-width for the cancel 'link' so that it is closer to the other buttons */
+    &.cancel {
+        min-width: 70px;
+    }
 
     &[type='submit'], &.submit, &.save {
         @include primary-button;
