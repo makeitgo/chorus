@@ -64,6 +64,15 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
 
 
 .dashboard_module {
+/* 
+
+    padding: $dashboard-module-padding $dashboard-module-padding ($dashboard-module-padding * 1.5) $dashboard-module-padding;
+    margin-top: 20px;
+    border: $border-canon;
+    @include border-radius(3px);
+    border-top-color: $border-color-dark;
+
+ */
 
 /* ************ */
 /* dashboard_module >  */
@@ -71,6 +80,7 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
 
     .activity_list {
         max-height: 450px;
+/*         overflow-y: scroll; */
         overflow-y: auto;
     }
 
@@ -117,6 +127,7 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
                 .squareish {
                     width: 220px;
                     height: 140px;
+
                 }
             }
         }
@@ -256,6 +267,7 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
 /*             } */
 /*         } */
 
+
     }
 /* END: recent workfiles */
 
@@ -278,7 +290,7 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
 
     .widget_configuration {
     display: none;
-    
+
     .mask {
         position: absolute;
 
