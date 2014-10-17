@@ -1,3 +1,5 @@
+$debug-browser-support: true;
+
 @import "_common";
 @import "components/_button";
 @import "compass/css3/border-radius";
@@ -300,6 +302,7 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
         i {
             color: $color-text3;
             font-size: 14px;
+            line-height: 26px;
         }
     }
 }
@@ -310,7 +313,6 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
 /* ************ */
 /* rules for general dashboard widget */
 /* provides a general style for a widget shell with header, title, content */
-
 
 .dashboard_module {
 
