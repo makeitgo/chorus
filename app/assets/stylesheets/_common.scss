@@ -630,20 +630,6 @@ $action-bar-secondary-background-color: $light-blue;
     }
 }
 
-@mixin panel-button($height) {
-    text-align: center;
-
-    line-height: $height;
-    height: $height;
-
-    background-color: $shaded-background-color;
-    border: $dark-border-canon;
-    @include border-radius($default-border-radius);
-
-    &:hover {
-        background-color: lighten($gray, 35%);
-    }
-}
 
 // Do not put any css rules into this file.  This file is only for declaration of variables and mixins
 //
