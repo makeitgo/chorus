@@ -26,8 +26,7 @@ $button-shade: rgba(10,117,163,0.118);
     }
 }
 
-@mixin primary-button {
-    @include button-canon;
+@mixin button-primary-coloring {
 
     background-image: linear-gradient(0deg, $bone-offwhite 0%, $brand 0%, $another-blue 100%);
     color: $nearly-white;
@@ -47,15 +46,16 @@ $button-shade: rgba(10,117,163,0.118);
         background-image: linear-gradient(0deg, $another-blue 0%, $brand 100%, $bone-offwhite 100%);
         box-shadow: inset 0px 1px 1px 0px $button-shade;
     }
+
+
 }
 
-@mixin secondary-button {
-    @include button-canon;
 
+@mixin button-secondary-coloring {
     background-image: linear-gradient(0deg, $bone-offwhite 0%, $bone-white 100%);
     color: $wet-concrete;
     border: 1px solid $another-shade-of-gray;
-    box-shadow: inset 0px 1px 1px 0px rgba(255,255,255,0.192);
+    /* box-shadow: inset 0px 1px 1px 0px rgba(255,255,255,0.192); */
 
     &:disabled, &:disabled:hover {
         background-image: linear-gradient(0deg, $bone-white 0%, $nearly-white 100%);
@@ -69,6 +69,18 @@ $button-shade: rgba(10,117,163,0.118);
         background-image: linear-gradient(0deg, $bone-white 0%, $bone-offwhite 100%);
         box-shadow: inset 0px 1px 1px 0px $button-shade;
     }
+}
+
+
+
+@mixin primary-button {
+    @include button-canon;
+    @include button-primary-coloring; 
+}
+
+@mixin secondary-button {
+    @include button-canon;
+    @include button-secondary-coloring;    
 }
 
 a.button, button, input[type=submit] {
