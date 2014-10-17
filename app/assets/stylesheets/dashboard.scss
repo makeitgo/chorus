@@ -183,11 +183,6 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
                 font-size: 12px;
             }
 
-            .clear_list {
-                width: 80px;
-                @include panel-button($height-button-widgetshell);
-            }
-
             ul li {
                 div {
                     display: inline-block;
