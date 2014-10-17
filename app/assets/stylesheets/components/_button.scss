@@ -27,7 +27,6 @@ $button-shade: rgba(10,117,163,0.118);
 }
 
 @mixin button-primary-coloring {
-
     background-image: linear-gradient(0deg, $bone-offwhite 0%, $brand 0%, $another-blue 100%);
     color: $nearly-white;
     border: 1px solid $border-blue;
@@ -46,8 +45,6 @@ $button-shade: rgba(10,117,163,0.118);
         background-image: linear-gradient(0deg, $another-blue 0%, $brand 100%, $bone-offwhite 100%);
         box-shadow: inset 0px 1px 1px 0px $button-shade;
     }
-
-
 }
 
 
@@ -72,6 +69,25 @@ $button-shade: rgba(10,117,163,0.118);
 }
 
 
+@mixin button-dashboard-coloring {
+    background-image: linear-gradient(0deg, $bone-offwhite 0%, $bone-white 100%);
+    color: $wet-concrete;
+    border: 1px solid $another-shade-of-gray;
+
+    &:disabled, &:disabled:hover {
+        background-image: linear-gradient(0deg, $bone-white 0%, $nearly-white 100%);
+    }
+
+    &:hover {
+        background-image: linear-gradient(0deg, $warm-bones 0%, $nearly-white 100%);
+    }
+
+    &:active {
+        background-image: linear-gradient(0deg, $bone-white 0%, $bone-offwhite 100%);
+        box-shadow: inset 0px 1px 1px 0px $button-shade;
+    }
+}
+
 
 @mixin primary-button {
     @include button-canon;
@@ -82,6 +98,31 @@ $button-shade: rgba(10,117,163,0.118);
     @include button-canon;
     @include button-secondary-coloring;    
 }
+
+@mixin configure-button {
+    // button addition for the buttons
+    // that are NOT submit or form buttons, 
+    // but used as configuration or action elements in the app
+    
+    @include button-dashboard-coloring;   
+}
+
+@mixin panel-button($height) {
+    text-align: center;
+
+    line-height: $height;
+    height: $height;
+
+/*     background-color: $shaded-background-color; */
+/*     border: $dark-border-canon; */
+    @include border-radius($default-border-radius);
+
+    @include button-dashboard-coloring;
+/*     &:hover { */
+/*         background-color: lighten($gray, 35%); */
+/*     } */
+}
+
 
 a.button, button, input[type=submit] {
     -webkit-appearance: initial;
