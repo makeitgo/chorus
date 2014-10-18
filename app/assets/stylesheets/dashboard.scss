@@ -298,7 +298,7 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
         height: 100%;
         
         /* ...and add to cover the shell's padding */
-        padding-bottom: $dashboard-module-padding * 2;
+        padding-bottom: ($dashboard-module-padding * 2) + 5;
         padding-right: $dashboard-module-padding * 2;
         
         background-color: $lightbox-overlay-color;
@@ -307,11 +307,14 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
 
     .config_content {
         position: absolute;
-        top: 0px;
-        
+/*         top: 0px; */
+        /* position to defeat the padding of the widget shell... */
+        top: -$dashboard-module-padding;
+        left: -$dashboard-module-padding;
+                
         width: 100%;
          /* defeat the existing padding */
-        margin: 0 -$dashboard-module-padding 0 -$dashboard-module-padding;
+        /*         margin: 0px -$dashboard-module-padding 0px -$dashboard-module-padding; */
         
         /* match padding of normal widget shell content */
         /* but account for the padding of the border */
@@ -320,7 +323,6 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
         background-color: #FFFFFF;
         @include border-radius($default-border-radius);
         border: 1px solid $charcoal;
-        
     }
 
     .button_row {     
@@ -429,15 +431,26 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
 
 }
 
-$app-tip-text: $color-text3;
 
-/* in-app instrinsic assistance text */
+/* empty and app-tip needs a better home location. */
+/* they are not specific to dashboard */
+/* empty state of some list or collection of stuff. */
+.empty_state {
+
+    p {
+        color: $disabled-text;
+    }
+}
+
+/* in-app intrinsic assistance text */
+$app-tip-text: $disabled-text;
+
 .app_tip {
-    margin: 10px 0 10px 0;
-    padding: 10px 10px 15px 10px;
+    margin-top: 10px;
+    padding: 10px 10px 20px 10px;
     
     background-color: $light-grey-yellow;
-    border: $border-canon;
+    /* border: $border-canon; */
     @include border-radius($default-border-radius);
     
     p {
