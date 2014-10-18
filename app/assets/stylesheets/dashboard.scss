@@ -181,7 +181,7 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
     &.dashboard_recent_workfiles {
         #recent_workfiles_main_content {
             position: relative;
-            min-height: 140px;
+            min-height: 150px;
 
             .clear_list {
                 width: 80px;
@@ -218,6 +218,8 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
                     font-weight: normal;
                     max-width: 400px;
                 }
+                
+                /* common handling for long names */
                 .workfile_link,
                 .workspace_link {
                     display: inline-block;
@@ -237,15 +239,10 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
             border-top: $border-canon;
             border-bottom: $border-canon;
         }
-        .recent_workfiles_list + emptystate {
-            border-color: #F00;
-        }
 
         
-        
-        #recent_workfiles_configuration {
+/*         #recent_workfiles_configuration { */
 /*             display:none; */
-
 /*             .mask { */
 /*                 position: absolute; */
 /*                 top: -10px; */
@@ -256,7 +253,6 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
 /*                 padding-right: 20px; */
 /*                 width: 100%; */
 /*             } */
-
 /*             .config_content { */
 /*                 background-color: #FFFFFF; */
 /*                 margin: 10px; */
@@ -266,7 +262,8 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
 /*             .button_row { */
 /*                 padding-top: 15px; */
 /*             } */
-        }
+/*         } */
+
     }
 /* END: recent workfiles */
 
@@ -325,7 +322,6 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
         border: 1px solid $charcoal;
         
     }
-
 
     .button_row {     
         margin-top: 20px;
@@ -435,7 +431,7 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
 
 $app-tip-text: $color-text3;
 
-/* in-app help or assistance text */
+/* in-app instrinsic assistance text */
 .app_tip {
     margin: 10px 0 10px 0;
     padding: 10px 10px 15px 10px;
