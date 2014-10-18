@@ -514,13 +514,25 @@ $app-tip-text: $disabled-text;
 
 $app-tip-text: $color-text3;
 
-/* in-app instrinsic assistance text */
+/* empty and app-tip needs a better home location. */
+/* they are not specific to dashboard */
+/* empty state of some list or collection of stuff. */
+.empty_state {
+
+    p {
+        color: $disabled-text;
+    }
+}
+
+/* in-app intrinsic assistance text */
+$app-tip-text: $disabled-text;
+
 .app_tip {
-    margin: 10px 0 10px 0;
-    padding: 10px 10px 15px 10px;
+    margin-top: 10px;
+    padding: 10px 10px 20px 10px;
     
     background-color: $light-grey-yellow;
-    border: $border-canon;
+    /* border: $border-canon; */
     @include border-radius($default-border-radius);
     
     p {
