@@ -195,42 +195,53 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
                         display: block;
                     }
                 }
-
+            }
+            
                 .file_name {
-                    padding: 3px 0 0 10px;
-                    width: 65%;
-                    @include ellipsis;
+                    padding: 1px 0 0 10px;
                 }
 
                 .workfile_link {
                     @include font-primary-link;
-                    max-width: 100%;
                     padding: 0 0 3px 0;
+                    width: 500px;
                 }
 
                 .workspace_image {
                     vertical-align: bottom;
-                    width: 20px;
-                    padding-right: 10px;
+                    width: 18px;
+                    padding-right: 5px;
                 }
 
                 .workspace_link {
                     @include font-secondary-link;
+                    font-weight: normal;
+                    max-width: 400px;
                 }
-
+                .workfile_link,
+                .workspace_link {
+                    display: inline-block;
+                    @include ellipsis;
+                }
+                
                 .time_edited {
                     float: right;
-                    padding-right: 200px;
+                    margin-right: 1%;
                     vertical-align: top;
-                    padding-top: 15px;
+                    padding-top: 10px;
                     @include secondary-text-small;
-                }
-            }
+                }    
         }
+        
         .recent_workfiles_list {
             border-top: $border-canon;
             border-bottom: $border-canon;
         }
+        .recent_workfiles_list + emptystate {
+            border-color: #F00;
+        }
+
+        
         
         #recent_workfiles_configuration {
 /*             display:none; */
@@ -420,6 +431,22 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
         }
     }
 
+}
+
+$app-tip-text: $color-text3;
+
+/* in-app help or assistance text */
+.app_tip {
+    margin: 10px 0 10px 0;
+    padding: 10px 10px 15px 10px;
+    
+    background-color: $light-grey-yellow;
+    border: $border-canon;
+    @include border-radius($default-border-radius);
+    
+    p {
+        color: $app-tip-text;
+    }
 }
 
 /* END: general dashboard widget */
