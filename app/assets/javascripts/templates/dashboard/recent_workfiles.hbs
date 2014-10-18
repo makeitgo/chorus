@@ -12,9 +12,10 @@
             </div>
         </div>
         
-        <div class="recent_workfiles_list">
+        
         {{#if modelLoaded}}
             {{#if hasModels}}
+            <div class="recent_workfiles_list">
                 <ul class="list selectable">
                     {{#each models}}
                         <li>
@@ -38,11 +39,19 @@
                         </li>
                     {{/each}}
                 </ul>
+            </div>
             {{else}}
-                <div>You do not currently have any recent items.</div>
+                <div class="empty_state">
+                    <div class="empty_message">
+                        {{t "dashboard.recent_workfiles.empty.message"}}
+                    <div>
+                    <div class="app_tip">
+                        {{t "dashboard.recent_workfiles.empty.tip"}}
+                    <div>
+                </div>
             {{/if}}
         {{/if}}
-        </div>
+        
     
         <div id="recent_workfiles_configuration" class="widget_configuration">
             <div class="mask"></div>
