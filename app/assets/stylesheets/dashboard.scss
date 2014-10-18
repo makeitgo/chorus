@@ -190,7 +190,6 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
                     }
                 }
             }
-
                 .file_name {
                     padding: 0 0 0 10px;
                 }
@@ -229,10 +228,15 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
                 }    
         }
 
+
         .recent_workfiles_list {
             border-top: $border-canon;
             border-bottom: $border-canon;
         }
+        .recent_workfiles_list + emptystate {
+            border-color: #F00;
+        }
+
         
 /*         #recent_workfiles_configuration { */
 /*             display:none; */
@@ -504,6 +508,22 @@ $app-tip-text: $disabled-text;
     
     background-color: $light-grey-yellow;
     /* border: $border-canon; */
+    @include border-radius($default-border-radius);
+    
+    p {
+        color: $app-tip-text;
+    }
+}
+
+$app-tip-text: $color-text3;
+
+/* in-app help or assistance text */
+.app_tip {
+    margin: 10px 0 10px 0;
+    padding: 10px 10px 15px 10px;
+    
+    background-color: $light-grey-yellow;
+    border: $border-canon;
     @include border-radius($default-border-radius);
     
     p {
