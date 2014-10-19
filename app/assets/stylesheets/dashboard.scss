@@ -371,6 +371,7 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
         margin-right: 3px;
         cursor: pointer;
         
+
         /* covers the FA and OI glyphs used; i.e the cog */
         i {
             color: $color-text3;
@@ -384,7 +385,6 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
         }
     }
     
-    /* remove rightside margin on the rightmost button so that it is flush right */
     /* .button:last-child { */
     /*      */
     /* } */
