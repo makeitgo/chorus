@@ -6,7 +6,7 @@ $debug-browser-support: true;
 
 /* height of buttons used for dashboard widget shell */
 /* e.g. configure button */
-$height-button-widgetshell: 25px;
+$height-button-widgetshell: 23px;
 
 $dashboard-module-title-height: 35px;
 $dashboard-module-padding: 10px;
@@ -139,8 +139,9 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
             min-height: 150px;
 
             .clear_list {
-                width: 80px;
+                width: 75px;
                 @include panel-button($height-button-widgetshell);
+                font-size: 12px;
             }
 
             ul li {
@@ -302,19 +303,22 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
     .right {
         float: right;
     }
-    .configure {
-        width: 40px;
-        @include panel-button($height-button-widgetshell);
-    }
     .button {
         background-color: $shaded-background-color;
         display: inline-block;
         cursor: pointer;
         i {
+            /* covers the FA and OI glyphs used, such as the cog */
             color: $color-text3;
-            font-size: 14px;
-            line-height: 26px;
+            font-size: 13px;
+            line-height: $height-button-widgetshell;
         }
+    }
+    
+    .configure {
+        /* the configure button */
+        width: 35px;
+        @include panel-button($height-button-widgetshell);
     }
 }
 
@@ -340,16 +344,26 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
     .button {
         background-color: $shaded-background-color;
         display: inline-block;
+        margin-right: 3px;
         cursor: pointer;
+        
 
+        /* covers the FA and OI glyphs used, such as the cog */
         i {
             color: $color-text3;
             font-size: 12px;
+            line-height: $height-button-widgetshell;
         }
     }
+    
+    /* remove rightside margin on the rightmost button so that it is flush right */
+    .button:last-child {
+        margin-right: 0px;
+    }
 
+    /* the configure button */
     .configure {
-        width: 40px;
+        width: 35px;
         @include panel-button($height-button-widgetshell);
     }
 
