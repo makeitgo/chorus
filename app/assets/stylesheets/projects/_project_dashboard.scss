@@ -58,7 +58,7 @@ $card-progressbar_zero: rgba(#C0C0C0, 0.5);
         &:hover {
             /* extended set of highlights on hover */
             border-color: $border-color-darkest;
-            .name_row {     
+            .name_row {
                 background-color: $card-namelayer_background_highlight;
                 
                 .progress_label {
@@ -67,7 +67,6 @@ $card-progressbar_zero: rgba(#C0C0C0, 0.5);
             }
 
             .layer_ambient_progress {
-
                 div[style="width:0%"] {
                     border-color: $card-progressbar_highlight;
                     background-color: transparent;
@@ -122,9 +121,8 @@ $card-progressbar_zero: rgba(#C0C0C0, 0.5);
         }
         
         .project_name {
-/*             display: block; */
+            display: block;
             @include font-primary-link;
-/*             font-size: 18px; */
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
@@ -142,7 +140,7 @@ $card-progressbar_zero: rgba(#C0C0C0, 0.5);
                 height: 100%;
             }
 
-            /* special case  of progress bar: when there are milestones but 0% progress */
+            /* special case of progress bar: when there are milestones but 0% progress */
             div.progress_bar[style="width:0%"] {
                 border-right: 5px dotted $card-progressbar;
                 background-color: transparent;
@@ -155,8 +153,7 @@ $card-progressbar_zero: rgba(#C0C0C0, 0.5);
             
             &.card_on_track,
             &.card_needs_attention,
-            &.card_at_risk  { 
-            /* background-color: rgba(100,100,170,0.15); */
+            &.card_at_risk {
             }
         }
    
