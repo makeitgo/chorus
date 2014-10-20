@@ -1,5 +1,7 @@
 <div class="dashboard_widget">
     <div id="recent_workfiles_main_content">
+    
+        <!-- part 1: header of widget -->
         <div class="module_header">
             <div class="title">{{t "dashboard.recent_workfiles.name"}}</div>
             <div class="right">
@@ -11,7 +13,8 @@
                 </div>
             </div>
         </div>
-
+        
+        <!-- part 2: main content of widget -->
         {{#if modelLoaded}}
             {{#if hasModels}}
             <div class="recent_workfiles_list">
@@ -50,17 +53,23 @@
                 </div>
             {{/if}}
         {{/if}}
-
-    
+        
+        <!-- ********** -->
+        <!-- BEGIN: general model for configuration panel of a widget -->
         <div id="recent_workfiles_configuration" class="widget_configuration">
+        
+            <!-- dark transparent masking overlay, shades the main widget content -->
             <div class="mask"></div>
         
+            <!-- BEGIN: configuration panel -->
             <div class="config_content">
-            
+                
+                <!-- part 1: header of configuration -->
                 <div class="module_header">
                     <div class="title">{{t "dashboard.recent_workfiles.name"}} {{t "dashboard.configuration"}}</div>
                 </div>
-
+                
+                <!-- part 2: content of configuration overlay -->
                 <div>{{t "dashboard.recent_workfiles.config.items.label"}}</div>
                 <div>
                     <select class="recent_items_select">
@@ -72,6 +81,8 @@
                         <option value="10">10</option>
                     </select>
                 </div>
+                
+                <!-- part 3: button row for the configuration overlay -->
                 <div class="button_row">
                    <span class="left">
                        <button type="submit" class="submit modalish">{{t "users.button.save_changes"}}</button>
@@ -79,7 +90,9 @@
                    </span>
                 </div>
             </div>
+            <!-- end: configuration panel -->
         </div>
+        <!-- END: general model for configuration panel of a widget -->
     
     </div>
 </div>
