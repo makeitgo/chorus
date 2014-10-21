@@ -3,17 +3,16 @@
         <a class="project_name" href="{{showUrl}}"><span title="{{name}}">{{name}}</span></a>
     </div>
 
-        {{#if hasMilestones}}
-        <!-- Only display if there is some milestone progress -->
-        <div class="layer_ambient_progress">
-            <span class="progress_label"
-                title="{{milestoneCompletedCount}}/{{milestoneCount}} {{pluralize milestoneCount 'dashboard.project_card_list.milestone'}} {{t 'dashboard.project_card_list.milestone_completed'}}">
-                <a href="{{milestonesUrl}}"> {{t 'workspace.project.progress.label'}} {{milestoneCompletedCount}}/{{milestoneCount}}</a>
-            </span>
-            <div class="progress_bar card" style="width:{{milestoneProgress}}%"></div>
-        </div>
-        {{/if}}
-
+    {{#if hasMilestones}}
+    <!-- Only display if there is some milestone progress -->
+    <div class="layer_ambient_progress">
+        <span class="progress_label"
+            title="{{milestoneCompletedCount}}/{{milestoneCount}} {{pluralize milestoneCount 'dashboard.project_card_list.milestone'}} {{t 'dashboard.project_card_list.milestone_completed'}}">
+            <a href="{{milestonesUrl}}"> {{t 'workspace.project.progress.label'}} {{milestoneCompletedCount}}/{{milestoneCount}}</a>
+        </span>
+        <div class="progress_bar card" style="width:{{milestoneProgress}}%"></div>
+    </div>
+    {{/if}}
 </div>
 
 <div class="metrics_row">
