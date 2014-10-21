@@ -69,7 +69,7 @@ describe("chorus.views.DashboardWorkspaceActivity", function() {
 
         it("displays no activity message and text tip", function () {
             expect(this.view.vis.entities.chart.domElement).toBe(null);
-            expect(this.view.$(".no_activity")).toContainTranslation("dashboard.workspace_activity.no_activity.text");
+            expect(this.view.$(".empty_message")).toContainTranslation("dashboard.workspace_activity.no_activity.text");
             expect(this.view.$(".text_tip")).toContainTranslation("dashboard.workspace_activity.no_activity.text_tip.text");
             expect(this.view.$(".text_tip a")).toContainTranslation("dashboard.workspace_activity.no_activity.text_tip.link.text");
         });

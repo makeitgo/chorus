@@ -10,18 +10,21 @@
     </div>
 </div>
 
-    {{#if hasModels}}
-    <div class="module_content">
-        <div>
-            <div class="chart"></div>
-        </div>
+{{#if hasModels}}
+<div class="module_content">
+    <div>
+        <div class="chart"></div>
     </div>
-    {{else}}
-        <div class="no_activity">
-            {{t "dashboard.workspace_activity.no_activity.text" }}
+</div>
+{{else}}
+    <div class="empty_state">
+        <div class="empty_message">
+            <p>{{t "dashboard.workspace_activity.no_activity.text" }}</p>
         </div>
         <div class="text_tip">
-            {{t "dashboard.workspace_activity.no_activity.text_tip.text" }}<br><br>
-            <a href="#/workspaces">{{t "dashboard.workspace_activity.no_activity.text_tip.link.text" }}</a>
+            <p>{{t "dashboard.workspace_activity.no_activity.text_tip.text" }}</p>
+            
+            <p><a href="#/workspaces">{{t "dashboard.workspace_activity.no_activity.text_tip.link.text" }}</a> {{t "dashboard.workspace_activity.no_activity.text_tip.link_more" }}</p>
         </div>
-    {{/if}}
+    </div>
+{{/if}}
