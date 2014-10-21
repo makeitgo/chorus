@@ -238,7 +238,7 @@ chorus.views.DashboardWorkspaceActivity = chorus.views.Base.extend({
                 var hovercard_activityMetric = workspaces[wid].eventCount;
                 var hovercard_activityMetric_html = '<div class="activity_metric_row"><p title="' + t("dashboard.workspace_activity.metric_tip") + '">' + t("dashboard.workspace_activity.metric") + " " + hovercard_activityMetric + '</p></div>';
 
-                hovercard_html = hovercard_name_html + hovercard_summary_html + hovercard_activityMetric_html;
+                var hovercard_html = hovercard_name_html + hovercard_summary_html + hovercard_activityMetric_html;
 
                 $(this).qtip({
                     content: {
