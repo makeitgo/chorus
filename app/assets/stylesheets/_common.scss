@@ -442,6 +442,12 @@ $action-bar-secondary-background-color: $light-blue;
     color: $color-text4;
 }
 
+@mixin secondary-text ($color) {
+    font-size: 12px;
+    font-weight: normal;
+    color: $color;
+}
+
 @mixin secondary-text-small-semibold {
     @include debugging-mixin;
     font-size: 12px;
