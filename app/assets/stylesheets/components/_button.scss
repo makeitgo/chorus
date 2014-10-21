@@ -113,10 +113,7 @@ $button-shade: rgba(10,117,163,0.118);
     line-height: $height;
     height: $height;
 
-/*     background-color: $shaded-background-color; */
-/*     border: $dark-border-canon; */
     @include border-radius($default-border-radius);
-
     @include button-dashboard-coloring;
 }
 
