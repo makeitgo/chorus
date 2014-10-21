@@ -4,16 +4,26 @@ $debug-browser-support: true;
 @import "components/_button";
 @import "compass/css3/border-radius";
 
+
+$padding-side-canon: 10px;
+$padding-top-canon: 10px;
+$padding-bottom-canon: 10px;
+
 /* height of buttons used for dashboard widget shell */
 /* e.g. configure button */
 $height-button-widgetshell: 23px;
+
+$dashboard-module-minheight: 150px;
 
 $dashboard-module-title-height: 35px;
 $dashboard-module-padding: 10px;
 $title-height: $dashboard-module-title-height - $dashboard-module-padding;
 
-/* dashboard PAGETYPE */
-/* layout rules       */
+
+/* PAGE styles */
+/* PAGETYPE: dashboard  */
+
+/* page layout        */
 div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
     #guts {
         padding: ($header-height + $subheader-height) $page-margin-right 10px $page-margin-left;
@@ -31,17 +41,19 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
         border: none;
         @include after-clearfix();
     }
+    
+     .right {
+        float: right;
+    }   
 }
-/* END dashboard PAGETYPE > layout */
+/* END page layout */
 
-/* ************ */
-/* dashboard PAGETYPE */
-/* heading            */
+/* page heading    */
 /* its mostly a regular page heading, but w/edit button on right */
 .dashboard_sub_header {
-    .right {
-        float: right;
-    }
+/*     .right { */
+/*         float: right; */
+/*     } */
     .button {
         background-color: $shaded-background-color;
         display: inline-block;
@@ -60,27 +72,35 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
         @include panel-button($height-button-widgetshell);
     }
 }
-/* END: dashboard PAGETYPE > heading */
+/* END: page heading */
+/* END: PAGETYPE dashboard */
 
+
+/* ************ */
+/* WIDGET STYLES */
 
 .dashboard_module {
 
-/* ************ */
-<<<<<<< HEAD
+
 /* A dashboard_module >  */
-=======
->>>>>>> 3b034acf5611279514517d6c5a1d2ab0862a2353
 /* widget: activity stream */
 
     .activity_list {
         max-height: 450px;
         overflow-y: auto;
     }
-/* END: activity stream */
-<<<<<<< HEAD
-=======
 
->>>>>>> 3b034acf5611279514517d6c5a1d2ab0862a2353
+/*     .module_header { */
+/*         &.activity_list_header { */
+/*             .menus { */
+/*                 float: none; */
+/*                 padding-top: 5px; */
+/*                 padding-bottom: 5px; */
+/*             } */
+/*         } */
+/*     } */
+
+/* END: activity stream */
 
     .no_activity {
         margin-top: 10px;
@@ -97,7 +117,7 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
         padding: 15px 10px 20px 10px;
         min-height: 60px;
         border: none;
-        border-radius: 3px;
+        border-radius: $default-border-radius;
         background-color: #F0F0E9;
         color: #595959;
         font-family: "Source Sans Pro",Helvetica,Arial,Verdana,sans-serif;
@@ -107,13 +127,8 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
         letter-spacing: normal;
     }
 
-<<<<<<< HEAD
-
 /* ************ */
 /* A dashboard_module >  */
-=======
-/* ************ */
->>>>>>> 3b034acf5611279514517d6c5a1d2ab0862a2353
 /* widget: site snapshot */
 
     &.dashboard_site_snapshot {
@@ -128,15 +143,6 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
                 .squareish {
                     width: 220px;
                     height: 140px;
-<<<<<<< HEAD
-=======
-
-                    .total {
-                        padding-top: 10px;
-                        @include dashboard-huge;
-                    }
->>>>>>> 3b034acf5611279514517d6c5a1d2ab0862a2353
-
                 }
             }
         }
@@ -166,18 +172,11 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
         .user .total { color: $purple; }
     }
 /* END: site snapshot */
-<<<<<<< HEAD
 
 
 /* ************ */
 /* dashboard_module >  */
 /* widget: workspace activity/most active chart */
-=======
-
-
-/* ************ */
-/* widget: workspace activity chart */
->>>>>>> 3b034acf5611279514517d6c5a1d2ab0862a2353
 
     &.dashboard_workspace_activity {
         .chart {
@@ -194,10 +193,7 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
 
 
 /* ************ */
-<<<<<<< HEAD
 /* A dashboard_module >  */
-=======
->>>>>>> 3b034acf5611279514517d6c5a1d2ab0862a2353
 /* widget: recent workfiles */
 
     &.dashboard_recent_workfiles {
@@ -219,23 +215,13 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
                     }
                 }
             }
-<<<<<<< HEAD
                 .file_name {
                     padding: 0 0 0 10px;
-=======
-            
-                .file_name {
-                    padding: 1px 0 0 10px;
->>>>>>> 3b034acf5611279514517d6c5a1d2ab0862a2353
                 }
 
                 .workfile_link {
                     @include font-primary-link;
-<<<<<<< HEAD
                     padding: 0 0 1px 0;
-=======
-                    padding: 0 0 3px 0;
->>>>>>> 3b034acf5611279514517d6c5a1d2ab0862a2353
                     width: 500px;
                 }
 
@@ -248,11 +234,7 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
                 .workspace_link {
                     @include font-secondary-link;
                     font-weight: normal;
-<<<<<<< HEAD
                     max-width: 420px;
-=======
-                    max-width: 400px;
->>>>>>> 3b034acf5611279514517d6c5a1d2ab0862a2353
                 }
                 
                 /* common handling for long names */
@@ -271,249 +253,88 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
                 }
         }
 
-
         .recent_workfiles_list {
             border-top: $border-canon;
             border-bottom: $border-canon;
         }
-
-        
-/*         #recent_workfiles_configuration { */
-/*             display:none; */
-/*             .mask { */
-/*                 position: absolute; */
-/*                 top: -10px; */
-/*                 left: -10px; */
-/*                 background-color: rgba(0,0,0,.75); */
-/*                 background-color: $lightbox-overlay-color; */
-/*                 padding-bottom: 2px; */
-/*                 padding-right: 20px; */
-/*                 width: 100%; */
-/*             } */
-/*             .config_content { */
-/*                 background-color: #FFFFFF; */
-/*                 margin: 10px; */
-/*                 padding: 10px; */
-/*             } */
-
-/*             .button_row { */
-/*                 padding-top: 15px; */
-/*             } */
-/*         } */
-
     }
 /* END: recent workfiles */
-
-    .module_header {
-        &.activity_list_header {
-            .menus {
-                float: none;
-                padding-top: 5px;
-                padding-bottom: 5px;
-            }
-        }
-    }
-
-
-/* .module_sub_header { */
-/*     padding-bottom: 7px; */
-/* } */
 
 }
 
 
 /* ************ */
-/* rules for general dashboard widget */
-/* provides a general style for a widget shell with common elements */
-
-
-/* ************ */
-/* dashboard widget general >  */
-/* styles for panel used in configuring the widgets */
+/* general dashboard widget */
+/* panel used in configuring the widgets */
 
 .dashboard_module {
 
     .widget_configuration {
         display: none;
 
-    .mask {
-        position: absolute;
+        .mask {
+            position: absolute;
 
-        /* position to defeat the padding of the widget shell... */
-        top: -$dashboard-module-padding;
-        left: -$dashboard-module-padding;
+            width: 100%;
+            height: 100%;
 
-        width: 100%;
-        height: 100%;
+            /* position to defeat the padding of the widget shell... */
+            top: -$dashboard-module-padding;
+            left: -$dashboard-module-padding;
+
+            /* ...and add to cover the shell's padding */
+            padding-bottom: ($dashboard-module-padding * 2) + 5;
+            padding-right: $dashboard-module-padding * 2;
         
-        /* ...and add to cover the shell's padding */
-        padding-bottom: ($dashboard-module-padding * 2) + 5;
-        padding-right: $dashboard-module-padding * 2;
-        
-        background-color: $lightbox-overlay-color;
-        @include border-radius($default-border-radius);
-    }
+            background-color: $lightbox-overlay-color;
+            @include border-radius($default-border-radius);
+        }
 
-    .config_content {
-        position: absolute;
-        /*         top: 0px; */
-        /* position to defeat the padding of the widget shell... */
-        top: -$dashboard-module-padding;
-        left: -$dashboard-module-padding;
+        .config_content {
+            position: absolute;
+            /* position to defeat the padding of the widget shell... */
+            top: -$dashboard-module-padding;
+            left: -$dashboard-module-padding;
                 
-        width: 100%;
-        /* defeat the existing padding */
-        /*         margin: 0px -$dashboard-module-padding 0px -$dashboard-module-padding; */
+            width: 100%;
+            /*         margin: 0px -$dashboard-module-padding 0px -$dashboard-module-padding; */
         
-        /* match padding of normal widget shell content */
-        /* but account for the padding of the border */
-        padding: $dashboard-module-padding - 1;
+            /* match padding of normal widget shell content */
+            /* but account for the padding of the border */
+            padding: $dashboard-module-padding - 1;
        
-        background-color: #FFFFFF;
-        @include border-radius($default-border-radius);
-        border: 1px solid $charcoal;
-    }
+            background-color: #FFFFFF;
+            @include border-radius($default-border-radius);
+            border: 1px solid $charcoal;
+        }
 
-    .button_row {     
-        margin-top: 20px;
-        padding-top: $dashboard-module-padding;
-        padding-bottom: $dashboard-module-padding;
+        .button_row {     
+            margin-top: 20px;
+            padding-top: $dashboard-module-padding;
+            padding-bottom: $dashboard-module-padding / 2;
+        }
     }
-        
 }
 
-<<<<<<< HEAD
-}
 /* END: widget configuration */
-
-/* .module_sub_header { */
-/*     padding-bottom: 7px; */
-/* } */
 
 
 /* ************ */
-/* rules for general dashboard widget */
+/* general dashboard widget */
 /* provides a general style for a widget shell with common elements */
 
 .dashboard_module {
 
+    min-height: $dashboard-module-minheight;
     padding: $dashboard-module-padding $dashboard-module-padding ($dashboard-module-padding * 1.5) $dashboard-module-padding;
     margin-top: 20px;
     border: $border-canon;
-    @include border-radius(3px);
-    border-top-color: $border-color-dark;
-    
-    /* .right section contains shell buttons, e.g. configure */
-    .right {
-        float: right;
-    }
-=======
-
-/* ************ */
-/* widget: styles for display when configuring the widget */
-
-.widget_configuration {
-    display: none;
-    
-    .mask {
-        position: absolute;
-
-        /* position to defeat the padding of the widget shell... */
-        top: -$dashboard-module-padding;
-        left: -$dashboard-module-padding;
-
-        width: 100%;
-        height: 100%;
-        
-        /* ...and add to cover the shell's padding */
-        padding-bottom: ($dashboard-module-padding * 2) + 5;
-        padding-right: $dashboard-module-padding * 2;
-        
-        background-color: $lightbox-overlay-color;
-        @include border-radius($default-border-radius);
-    }
-
-    .config_content {
-        position: absolute;
-/*         top: 0px; */
-        /* position to defeat the padding of the widget shell... */
-        top: -$dashboard-module-padding;
-        left: -$dashboard-module-padding;
-                
-        width: 100%;
-         /* defeat the existing padding */
-        /*         margin: 0px -$dashboard-module-padding 0px -$dashboard-module-padding; */
-        
-        /* match padding of normal widget shell content */
-        /* but account for the padding of the border */
-        padding: $dashboard-module-padding - 1;
-       
-        background-color: #FFFFFF;
-        @include border-radius($default-border-radius);
-        border: 1px solid $charcoal;
-    }
-
-    .button_row {     
-        margin-top: 20px;
-        padding-top: $dashboard-module-padding;
-        padding-bottom: $dashboard-module-padding;
-    }
-        
-}
-/* END: widget configuration */
-
-
-/* .module_sub_header { */
-/*     padding-bottom: 7px; */
-/* } */
-
-
-/* ************ */
-/* dashboard heading/title */
-/* regular page heading, but w/edit button on right */
-
-.dashboard_sub_header {
-    .right {
-        float: right;
-    }
-    .button {
-        background-color: $shaded-background-color;
-        display: inline-block;
-        cursor: pointer;
-        i {
-            /* covers the FA and OI glyphs used, such as the cog */
-            color: $color-text3;
-            font-size: 13px;
-            line-height: $height-button-widgetshell;
-        }
-    }
-    
-    .configure {
-        /* the configure button */
-        width: 35px;
-        @include panel-button($height-button-widgetshell);
-    }
-}
-
-/* END: dashboard heading/title */
-
-
-/* ************ */
-/* rules for general dashboard widget */
-/* provides a general style for a widget shell with header, title, content */
-
-.dashboard_module {
-
-    padding: $dashboard-module-padding $dashboard-module-padding ($dashboard-module-padding * 1.5) $dashboard-module-padding;
-    margin-top: 20px;
-    border: $border-canon;
-    @include border-radius(3px);
+    @include border-radius($default-border-radius);
     border-top-color: $border-color-dark;
 
-    .right {
-        float: right;
-    }
->>>>>>> 3b034acf5611279514517d6c5a1d2ab0862a2353
+/*     .right { */
+/*         float: right; */
+/*     } */
     
     .button {
         background-color: $shaded-background-color;
@@ -521,36 +342,25 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
         margin-right: 3px;
         cursor: pointer;
         
-
-<<<<<<< HEAD
         /* covers the FA and OI glyphs used; i.e the cog */
-=======
-        /* covers the FA and OI glyphs used, such as the cog */
->>>>>>> 3b034acf5611279514517d6c5a1d2ab0862a2353
         i {
             color: $color-text3;
             font-size: 12px;
             line-height: $height-button-widgetshell;
         }
-<<<<<<< HEAD
-        
+
         /* remove rightside margin on the rightmost button so that it is flush right */
         &:last-child {
             margin-right: 0px;
-=======
-    }
-    
-    /* remove rightside margin on the rightmost button so that it is flush right */
-    .button:last-child {
-        margin-right: 0px;
+        }
     }
 
     /* the configure button */
     .configure {
-        width: 35px;
+        width: 28px;
         @include panel-button($height-button-widgetshell);
     }
-
+    
     .module_header {
         min-height: $title-height + $dashboard-module-padding;
         line-height: $title-height;
@@ -560,54 +370,21 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
             @include dashboard-module-title;
             height: $title-height;
             line-height: $title-height;
->>>>>>> 3b034acf5611279514517d6c5a1d2ab0862a2353
         }
-    }
-    
-    /* .button:last-child { */
-    /*      */
-    /* } */
-
-    /* the configure button */
-    .configure {
-        width: 35px;
-        @include panel-button($height-button-widgetshell);
-    }
-
-
-    .module_header {
-        min-height: $title-height + $dashboard-module-padding;
-        line-height: $title-height;
-
-<<<<<<< HEAD
-        .title {
-            display: inline-block;
-            @include dashboard-module-title;
-            height: $title-height;
-            line-height: $title-height;
-=======
-        .menus {
-            float: none !important;
-            padding-bottom: 5px;
->>>>>>> 3b034acf5611279514517d6c5a1d2ab0862a2353
-        }
-
-    }
-    
-<<<<<<< HEAD
-/* rules for the recent activity hovering list that is part of the workspace cards */
-.tooltip {
         
-    li.comment {
-        .insight_ribbon {
-            top: -18px;
+        .menus {
+            float: none;
+            padding-top: 5px;
+            padding-bottom: 5px;
         }
     }
+}
     
-=======
->>>>>>> 3b034acf5611279514517d6c5a1d2ab0862a2353
+
+/* rules for the recent activity hovering list that is part of the workspace cards */
+
     .tooltip {
-        width: 350px;
+        /* width: 350px; */
         li.comment {
             .insight_ribbon {
                 top: -18px;
@@ -616,20 +393,13 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
                 display: inline;
             }
         }
-<<<<<<< HEAD
     }
-}
-
-}
 
 
 /* TODO move this to the right location */
 /* in the css file */
 
 /* workspace most active chart: card of workspace details that displays on hover */
-$padding-side-canon: 10px;
-$padding-top-canon: 10px;
-$padding-bottom-canon: 10px;
   
 .hovercard {
     width: 300px;
@@ -643,7 +413,7 @@ $padding-bottom-canon: 10px;
 		/* override defaults */
 		padding: 0;
     	background-color: #FFFFFF;
-    	border-radius: 3px;
+    	border-radius: $default-border-radius;
          
         .name_row {
 			padding: $padding-top-canon $padding-side-canon $padding-bottom-canon $padding-side-canon;
@@ -671,19 +441,18 @@ $padding-bottom-canon: 10px;
 	}
 }
 
-
 /* ********** */
-$app-tip-text: $color-text3;
+/* ********** */
 
 /* empty and app-tip needs a better home location. */
 /* they are not specific to dashboard */
 /* empty state of some list or collection of stuff */
-.empty_state {
 
+
+.empty_state {
     p {
         color: $disabled-text;
     }
-
 }
 
 /* in-app intrinsic assistance text */
@@ -701,50 +470,3 @@ $app-tip-text: $disabled-text;
         color: $app-tip-text;
     }
 }
-
-$app-tip-text: $color-text3;
-
-/* empty and app-tip needs a better home location. */
-/* they are not specific to dashboard */
-/* empty state of some list or collection of stuff. */
-.empty_state {
-
-    p {
-        color: $disabled-text;
-    }
-}
-
-=======
-    }
-
-}
-
-
-/* empty and app-tip needs a better home location. */
-/* they are not specific to dashboard */
-/* empty state of some list or collection of stuff. */
-.empty_state {
-
-    p {
-        color: $disabled-text;
-    }
-}
-
->>>>>>> 3b034acf5611279514517d6c5a1d2ab0862a2353
-/* in-app intrinsic assistance text */
-$app-tip-text: $disabled-text;
-
-.app_tip {
-    margin-top: 10px;
-    padding: 10px 10px 20px 10px;
-    
-    background-color: $light-grey-yellow;
-    /* border: $border-canon; */
-    @include border-radius($default-border-radius);
-    
-    p {
-        color: $app-tip-text;
-    }
-}
-
-/* END: general dashboard widget */
