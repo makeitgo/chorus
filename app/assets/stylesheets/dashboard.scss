@@ -51,9 +51,6 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
 /* page heading    */
 /* its mostly a regular page heading, but w/edit button on right */
 .dashboard_sub_header {
-/*     .right { */
-/*         float: right; */
-/*     } */
     .button {
         background-color: $shaded-background-color;
         display: inline-block;
@@ -331,10 +328,6 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
     border: $border-canon;
     @include border-radius($default-border-radius);
     border-top-color: $border-color-dark;
-
-/*     .right { */
-/*         float: right; */
-/*     } */
     
     .button {
         background-color: $shaded-background-color;
