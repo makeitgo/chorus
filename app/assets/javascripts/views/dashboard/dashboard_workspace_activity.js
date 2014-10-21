@@ -69,7 +69,7 @@ chorus.views.DashboardWorkspaceActivity = chorus.views.Base.extend({
                             return 960 - this.margin.left - this.margin.right;
                         },
                         // Groovy colors: fillColors: ['#B343BB', '#2A8C82', '#999989', '#CFCF15', '#393BBD', '#FF9C1A', '#91C531', '#DC2C2C', '#666666', '#DE592C']
-                        fillColors: ['#3182bd', '#6baed6', '#9ecae1', '#e6550d', '#fd8d3c', '#fdae6b', '#31a354', '#74c476', '#74c476', '#756bb1']
+                        fillColors: ['#3182bd', '#6baed6', '#9ecae1', '#e6550d', '#fd8d3c', '#fdae6b', '#31a354', '#74c476', '#A1D99B', '#756bb1']
                     }
                 },
                 // hovercard shown in the chart upon mouseover
