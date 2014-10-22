@@ -6,10 +6,9 @@ chorus.views.DashboardActivityStream = chorus.views.DashboardModule.extend({
         activities.per_page = 10;
         activities.fetch();
         this.content = this.activityList = new chorus.views.ActivityList({ collection: activities, additionalClass: "dashboard" });
-        this.contentHeader = new chorus.views.ActivityListHeader({
+        this.contentHeader = new chorus.views.DashboardModuleActivityListHeader({
             collection: activities,
-            allTitle: t("dashboard.title.activity"),
-            insightsTitle: t("dashboard.title.insights")
+            allTitle: t("dashboard.activity_stream.title")
         });
     }
 });

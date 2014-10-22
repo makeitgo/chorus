@@ -241,7 +241,7 @@ li .activity_content,
 }
 
 .activity_list.dashboard {
-	padding-top: $activity-gutter;
+	padding-top: 10px;
 	border-top: $border-canon;
 	border-bottom: $border-canon;
     .heading {
@@ -256,7 +256,6 @@ li .activity_content,
             left: -5px;
         }
     }
-
 }
 
 #sidebar {
