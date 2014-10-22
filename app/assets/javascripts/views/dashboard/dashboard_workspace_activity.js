@@ -2,17 +2,44 @@ chorus.views.DashboardWorkspaceActivity = chorus.views.Base.extend({
     constructorName: "DashboardWorkspaceActivity",
     templateName:"dashboard/workspace_activity",
     entityType: "workspace_activity",
-
+    events: {
+        "change .date_group_filter": "onFilterChange"
+    },
     setup: function() {
+        this.date_options = {
+            'day_7': {
+                dateGroup: 'day',
+                dateParts: 7,
+                tickFcn: d3.time.days
+            },
+            'week_4': {
+                dateGroup: 'week',
+                dateParts: 4,
+                tickFcn: d3.time.weeks
+            },
+            'week_12': {
+                dateGroup: 'week',
+                dateParts: 12,
+                tickFcn: d3.time.weeks
+            }
+        };
+
         this.model = new chorus.models.DashboardData({});
         this.requiredResources.add(this.model);
-        this.model.urlParams = { entityType: this.entityType };
+
+        this.cur_date_opt = 'day_7';
+        this.model.urlParams = {
+            entityType: this.entityType,
+            dateGroup: 'day',
+            dateParts: 7
+        };
+        this.tickFcn = d3.time.days;
         this.model.fetch();
 
         this.vis = {
             // Properties about data provided by server
             dataSettings: {
-                date_format: d3.time.format("%Y-%m-%d %H:%M:%S") // d3.time.format.iso
+                date_format: d3.time.format("%Y-%m-%d") // d3.time.format.iso
             },
 
             // Data to be rendered.
@@ -31,9 +58,9 @@ chorus.views.DashboardWorkspaceActivity = chorus.views.Base.extend({
                     properties: {
                         margin: {
                             top:    20,
-                            right:  30,
-                            bottom: 30,
-                            left:   20
+                            right:  40,
+                            bottom: 40,
+                            left:   40
                         },
                         get height () {
                             return 340 - this.margin.top - this.margin.bottom;
@@ -41,14 +68,12 @@ chorus.views.DashboardWorkspaceActivity = chorus.views.Base.extend({
                         get width () {
                             return 960 - this.margin.left - this.margin.right;
                         },
-                        fillColors: ['#B343BB', '#2A8C82', '#999989', '#CFCF15', '#393BBD',
-                                     '#FF9C1A', '#91C531', '#DC2C2C', '#666666', '#DE592C']
+                        // Groovy colors: fillColors: ['#B343BB', '#2A8C82', '#999989', '#CFCF15', '#393BBD', '#FF9C1A', '#91C531', '#DC2C2C', '#666666', '#DE592C']
+                        fillColors: ['#3182bd', '#6baed6', '#9ecae1', '#e6550d', '#fd8d3c', '#fdae6b', '#31a354', '#74c476', '#A1D99B', '#756bb1']
                     }
                 },
-                // Tooltip shown in the chart upon mouseover
-                tooltip: {
-                    // Reference to the domElement
-                    domElement: null,
+                // hovercard shown in the chart upon mouseover
+                hovercard: {
                     // Params we'll use during rendering
                     properties: {
                     }
@@ -56,29 +81,53 @@ chorus.views.DashboardWorkspaceActivity = chorus.views.Base.extend({
             }
         };
     },
-
+    additionalContext: function () {
+        return {
+            modelLoaded: this.model.get("data") !== undefined,
+            hasModels: this.model.get("data") ? this.model.get("data").events && this.model.get("data").events.length > 0 : false
+        };
+    },
+    onFilterChange: function(e) {
+        e && e.preventDefault();
+        this.cur_date_opt = this.selectElement().val();
+        var opt = this.date_options[this.cur_date_opt];
+        this.model.urlParams = {
+            entityType: this.entityType,
+            dateGroup: opt.dateGroup,
+            dateParts: opt.dateParts
+        };
+        this.tickFcn = opt.tickFcn;
+        this.model.fetch();
+    },
+    selectElement: function() {
+        return this.$("select.date_group_filter");
+    },
     postRender: function() {
+        // Bind date filter selection
+        _.defer(_.bind(function () {
+            chorus.styleSelect(this.selectElement());
+        }, this));
+        this.selectElement().val(this.cur_date_opt);
+
         // Load raw data used in visualization:
-        // Our data looks like a flat array of objects. Example:
-        /*   { "data": [{
-                 "date_part": "2014-09-18 00:00:00",
-                 "workspace_id": 1,
-                 "event_count": 0
-             }, {
-                 "date_part": "2014-09-18 00:00:00",
-                 "workspace_id": 2,
-                 "event_count": 0
-             }]
-            }
-         */
+        var fetchedData = this.model.get("data");
+
+        var workspaces = fetchedData.workspaces;
+        var tickLabels = fetchedData.labels;
         var data = this.vis.data = _.each(
-            this.model.get("data"),
+            fetchedData.events,
             function(pt) {
                 if (typeof pt.datePart === 'string' || pt.datePart instanceof String) {
                     pt.datePart = this.vis.dataSettings.date_format.parse(pt.datePart);
                 }
             },
             this);
+
+        if (fetchedData === null || workspaces === null || tickLabels === null || data === null ||
+            workspaces.length === 0 || tickLabels.length === 0 || data.length === 0) {
+                this.$(".chart").html( t("dashboard.workspace_activity.no_activity.text") );
+            return;
+        }
 
         // We use "nest" to transform it into d3-style dictionary, with key: workspaceId, values: data rows having workspaceId.
         var event_counts_by_workspace_id = d3.nest()
@@ -92,22 +141,20 @@ chorus.views.DashboardWorkspaceActivity = chorus.views.Base.extend({
             });
 
         // Entities in the visualization:
-        var chart = this.vis.entities.chart,
-            tooltip = this.vis.entities.tooltip;
+        var chart = this.vis.entities.chart;
 
         // Set up scaling functions and the axes
         var xScale  = d3.time.scale().range([0, chart.properties.width]),
             yScale = d3.scale.linear().range([chart.properties.height, 0]);
 
-        var date_format = d3.time.format("%b %d");
-        var today = date_format(new Date());
         var xAxis = d3.svg.axis()
                 .scale(xScale)
                 .orient("bottom")
-                .ticks(d3.time.days)
+                .ticks(this.tickFcn)
+                .tickValues(_.uniq(_.map(data, function(d) {return d.datePart;}), function (d) { return JSON.stringify(d); }))
                 .tickFormat(function(d) {
-                    var ts = date_format(d);
-                    return (ts === today)? 'Today' : ts;
+                    var ind = Math.floor((tickLabels.length - 1)*xScale(d)/chart.properties.width);
+                    return tickLabels[ind];
                 });
 
         // Our chart will contain a "stack layout": https://github.com/mbostock/d3/wiki/Stack-Layout
@@ -143,7 +190,6 @@ chorus.views.DashboardWorkspaceActivity = chorus.views.Base.extend({
         var $el = this.$(".chart");
         $el.html("").addClass("visualization");
         chart.domElement = $el;
-        tooltip.domElememt = this.$(".tooltip");
 
         var w = chart.properties.width + chart.properties.margin.left + chart.properties.margin.right;
         var h = chart.properties.height + chart.properties.margin.top + chart.properties.margin.bottom;
@@ -162,9 +208,9 @@ chorus.views.DashboardWorkspaceActivity = chorus.views.Base.extend({
             .attr("id", "clip")
             .append("svg:rect")
             .attr("x", "0")
-            .attr("y", "0")
+            .attr("y", -chart.properties.margin.top)
             .attr("width", chart.properties.width)
-            .attr("height", chart.properties.height);
+            .attr("height", chart.properties.height + chart.properties.margin.top);
 
         canvas.selectAll(".layer")
             .data(layers)
@@ -176,23 +222,96 @@ chorus.views.DashboardWorkspaceActivity = chorus.views.Base.extend({
                 return colorFillFcn(i);
             })
             .attr("clip-path", "url(#clip)")
-            .on('mouseover', _.bind(this.mouseover, this))
-            .on('mouseout', _.bind(this.mouseout, this));
+            .each(function(s) {
+                var wid = workspaces.map(function(e) { return e.workspaceId; }).indexOf(1*s.key);
+
+				// generate the content of the hovercard.
+				// ...this should be in a template...
+
+                // name
+                var hovercard_name_html = '<div class="name_row"><a class="project_name" href="#workspaces/' + workspaces[wid].workspaceId + '" title="'+ workspaces[wid].name + '">' + workspaces[wid].name + '</a></div>';
+
+				// workspace description, if there is one 
+                var hovercard_summary_html = workspaces[wid].summary ? '<div class="summary_row" id="colorFillFcn(wid)"><p>' + workspaces[wid].summary + '</p></div>' : "";
+
+                // metric value
+                var hovercard_activityMetric = workspaces[wid].eventCount;
+                var hovercard_activityMetric_html = '<div class="activity_metric_row"><p title="' + t("dashboard.workspace_activity.metric_tip") + '">' + t("dashboard.workspace_activity.metric") + " " + hovercard_activityMetric + '</p></div>';
+
+                var hovercard_html = hovercard_name_html + hovercard_summary_html + hovercard_activityMetric_html;
+
+                $(this).qtip({
+                    content: {
+                        button: true,
+                        text: hovercard_html
+                    },
+                    hide: {
+                        event: 'mouseout',
+                        delay: 400,
+                        fixed: true,
+                        effect: {
+                            type: 'fade',
+                            length: 32
+                        }
+                    },
+                    show: {
+                        solo: true, 
+                        effect: {
+                            type: 'fade',
+                            length: 170
+                        }        
+                    },
+                    position: {
+                        target: 'mouse',
+                        adjust: {
+                            mouse: false
+                        },
+                        at: 'topLeft',
+                        my: 'bottomCenter'
+                    },
+                    style: {
+                        classes: "tooltip-white hovercard",
+                        tip: {
+                            width: 12,
+                            height: 15
+                        }
+                    }
+                });
+            });
 
         canvas.append("g")
             .attr("class", "x axis")
             .attr("transform", "translate(0," + chart.properties.height + ")")
-            .call(xAxis);
+            .call(xAxis)
+            .selectAll("text")
+            .call(this.wrap, chart.properties.width / (tickLabels.length + 4));
     },
+    wrap: function (text, width) {
+        text.each(function() {
+            var text = d3.select(this),
+                words = text.text().split(/\s+/).reverse(),
+                word,
+                line = [],
+                lineNumber = 0,
+                lineHeight = 1.1, // ems
+                y = text.attr("y"),
+                dy = parseFloat(text.attr("dy")),
+                tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", dy + "em");
+            word = words.pop();
+            while (word) {
+                line.push(word);
+                tspan.text(line.join(" "));
+                if (tspan.node().getComputedTextLength() > width) {
+                    line.pop();
+                    tspan.text(line.join(" "));
+                    line = [word];
+                    tspan = text.append("tspan").attr("x", 0).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
+                }
 
-    mouseover: function(data, index) {
-        this._log('mouseover', data.key);
+                word = words.pop();
+            }
+        });
     },
-
-    mouseout: function(data, index) {
-        this._log('mouseout', data.key);
-    },
-
     _log: function(type, msg) {
         chorus.isDevMode() && chorus.toast("=> " + type + ": " + msg, { skipTranslation: true });
     }
