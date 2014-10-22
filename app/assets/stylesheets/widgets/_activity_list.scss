@@ -19,10 +19,10 @@ $system-action-color: #7C7D7D;
     display: block;
 }
 
-.notification_list, .activity_list {
+.notification_list, 
+.activity_list {
     a[href=''], a:not([href]) {
         color: $color-text3;
-        cursor: auto;
         text-decoration: none;
     }
 
@@ -33,10 +33,9 @@ $system-action-color: #7C7D7D;
 
         a {
             display: inline-block;
+            max-width: 50%;
             width: 100%;
             @include panel-button(30px);
-
-            max-width: $page-min-width / 2;
         }
     }
 
@@ -56,41 +55,42 @@ $system-action-color: #7C7D7D;
         position: relative;
         overflow: visible;
     }
-
-    .insight_ribbon {
-            padding: 0;
-            position: absolute;
-            left: -7px;
-            top: -9px;
-            z-index: 10;
-            line-height: 11px;
-            height: 22px;
-
-            .left {
-                background: url(/images/ribbons/label_insight1.png) no-repeat;
-                width: 6px;
-                height: 22px;
-                display: inline-block;
-            }
-
-            .center {
-                @include database-column-type;
-                background: url(/images/ribbons/label_insight2.png) repeat-x;
-                height: 14px;
-                display: inline-block;
-                padding: 3px 8px 2px 8px;
-                vertical-align: top;
-                @include uppercase;
-            }
-
-            .right {
-                background: url(/images/ribbons/label_insight3.png) no-repeat;
-                width: 12px;
-                height: 22px;
-                display: inline-block;
-            }
-        }
 }
+
+.insight_ribbon {
+        padding: 0;
+        position: absolute;
+        left: -7px;
+        top: -9px;
+        z-index: 10;
+        line-height: 11px;
+        height: 22px;
+
+        .left {
+            background: url(/images/ribbons/label_insight1.png) no-repeat;
+            width: 6px;
+            height: 22px;
+            display: inline-block;
+        }
+
+        .center {
+            @include database-column-type;
+            background: url(/images/ribbons/label_insight2.png) repeat-x;
+            height: 14px;
+            display: inline-block;
+            padding: 3px 8px 2px 8px;
+            vertical-align: top;
+            @include uppercase;
+        }
+
+        .right {
+            background: url(/images/ribbons/label_insight3.png) no-repeat;
+            width: 12px;
+            height: 22px;
+            display: inline-block;
+        }
+    }
+
 
 .comment_list {
     .comments {
@@ -98,7 +98,8 @@ $system-action-color: #7C7D7D;
     }
 }
 
-.activity_content, .comment_content {
+.activity_content, 
+.comment_content {
     ul.attachments {
         img {
             vertical-align: middle;
@@ -123,12 +124,16 @@ $system-action-color: #7C7D7D;
     .activity_header, .comment_header {
         word-wrap: break-word;
         @include secondary-text-normal;
-        line-height: 18px;
-        padding-bottom: $text-padding-y;
-        .author { font-weight: $semibold; }
+        line-height: 20px;
+        
+        .author { 
+            font-weight: $semibold;
+        }
     }
 
     .actions {
+        margin-top:5px;
+    
         .timestamp {
             @include secondary-text-small;
             line-height: 20px;
@@ -143,7 +148,8 @@ $system-action-color: #7C7D7D;
             }
         }
 
-        a.delete_link, a.edit_link {
+        a.delete_link,
+        a.edit_link {
             @include secondary-text-small;
             display: none;
             border-left: solid 1px;
@@ -163,9 +169,8 @@ $system-action-color: #7C7D7D;
     }
 
     .links {
-        padding: 4px 0;
+        padding: 5px 0 0 0;
         font-size: 12px;
-        padding-bottom: $text-padding-y;
 
         a {
             font-size: 12px;
@@ -174,8 +179,8 @@ $system-action-color: #7C7D7D;
         .separator {
             position: relative;
             top: -1px;
-            color: $link-color;
-            margin: 0 2px;
+            color: $shadow-gray;
+            margin: 0 3px;
         }
     }
 
@@ -211,8 +216,7 @@ li .activity_content,
         border-bottom: $border-canon;
 
         &.insight {
-            background: white;
-/*             border-right: $border-canon; */
+            background: #FFFFFF;
             border-bottom: $border-canon;
             .activity_item {
                 padding-top: 12px;
@@ -223,7 +227,7 @@ li .activity_content,
 
 .recent_comments_list {
     .ui-tooltip-content {
-        padding: 0 0 0 0;
+        padding: 0;
         overflow: visible;
 
         ul.activities {
@@ -242,7 +246,7 @@ li .activity_content,
 
 #sidebar .activity_list {
     li.insight {
-        background: white;
+        background: #FFFFFF;
         .insight_ribbon {
             left: -5px;
         }
@@ -250,7 +254,8 @@ li .activity_content,
 }
 
 #sidebar {
-    &.data_source_list_sidebar, &.workfile_show_sidebar {
+    &.data_source_list_sidebar, 
+    &.workfile_show_sidebar {
         .activity_list .heading {
             display: none
         }
