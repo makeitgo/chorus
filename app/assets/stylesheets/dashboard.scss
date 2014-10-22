@@ -80,28 +80,50 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
 .dashboard_module {
 
 
-/* A dashboard_module >  */
-/* widget: activity stream */
+/* ************ */
+/* A dashboard_module             */
+/* widget: recent activity stream */
 
-    .activity_list {
-        max-height: 450px;
-        overflow-y: auto;
-    }
+    /*  note: there is additional css for activity list dashboard widget in _activity_list.scss */
+    
+    .dashboard_activity_list {        
+        .activity_wrapper {
+            border-top: $border-canon;
+            border-bottom: $border-canon;
+            
+            .activity_frame {
+            max-height: $dashboard-module-minheight * 3;
+            overflow-y: auto;
+            }
+        }
+        .activities {
+            padding-top: 10px;
+        }
+        
+        a[href=''], a:not([href]) {
+            color: $color-text3;
+            text-decoration: none;
+        }
 
-    .activity_list.dashboard {
-        padding-top: 10px;
-        border-top: $border-canon;
-        border-bottom: $border-canon;
-        .heading {
-            display: none;
+        .more_items {
+            font-size: 12px;
+            padding: $padding-top-canon 0 $padding-bottom-canon 0;
+            text-align: center;
+
+            a {
+                display: inline-block;
+                max-width: 50%;
+                width: 100%;
+                @include panel-button(30px);
+            }
         }
     }
 
-/* END: activity stream */
+/* END: recent activity stream */
 
 
 /* ************ */
-/* A dashboard_module >  */
+/* A dashboard_module    */
 /* widget: site snapshot */
 
     &.dashboard_site_snapshot {
@@ -166,13 +188,13 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
 
 
 /* ************ */
-/* A dashboard_module >  */
+/* A dashboard_module       */
 /* widget: recent workfiles */
 
     &.dashboard_recent_workfiles {
         #recent_workfiles_main_content {
             position: relative;
-            min-height: 150px;
+            min-height: $dashboard-module-minheight;
 
             .clear_list {
                 width: 75px;
@@ -299,8 +321,8 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
     min-height: $dashboard-module-minheight;
     padding: $dashboard-module-padding $dashboard-module-padding ($dashboard-module-padding * 1.5) $dashboard-module-padding;
     margin-top: 20px;
-    border: $border-canon;
     @include border-radius($default-border-radius);
+    border: $border-canon;
     border-top-color: $border-color-dark;
     
     .button {
@@ -340,11 +362,15 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
         }
         
         .menus {
-            float: none;
+            float: none !important;
             padding-top: 5px;
             padding-bottom: 5px;
         }
     }
+
+    .loading_text {
+        margin-left: 0px;
+    }  
 }
     
 

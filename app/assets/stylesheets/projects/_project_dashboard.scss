@@ -21,19 +21,11 @@ $card-progressbar_zero: rgba(#C0C0C0, 0.5);
     select, .ui-selectmenu-button .ui-button {
         display: inline-block;
     }
-
-    .menus {
-        float: none !important;
-        padding-bottom: 5px;
-    }
-    
-    .dashboard_project_list {
-        margin-left: -10px;
-    }
 }
-    
-    .dashboard_project_card {
 
+
+/* media queries for card size        */
+    .dashboard_project_card {
         @media (max-width: 1024px) {
             width: 308px
         }
@@ -52,171 +44,179 @@ $card-progressbar_zero: rgba(#C0C0C0, 0.5);
             min-width: 17%;
             max-width: 25%;
         }
+    }
 
-        &:hover {
-            /* extended set of highlights on hover */
-            border-color: $border-color-darkest;
-            .name_row {
-                background-color: $card-namelayer_background_highlight;
-                
-                .progress_label {
-                    display: inline-block;
-                }
-            }
+/* extended set of highlights on hover */    
+.dashboard_project_card {
+    &:hover {
 
-            .layer_ambient_progress {
-                div[style="width:0%"] {
-                    border-color: $card-progressbar_highlight;
-                    background-color: transparent;
-                }
-                .card {
-                    background-color: $card-progressbar_highlight;
-                }
-            }
-                        
-            .metrics_row, .insight_row {
-                background-color: #F0F5FF;
-            }
-            
-            .name_row *,
-            .layer_ambient_progress .card,
-            .metrics_row,
-            .insight_row {
-                @include transition-duration(1s);
-                @include transition-timing-function(cubic-bezier(0,0,0,1));
-            }
-        }
-
-        position: relative;
-        vertical-align: top;
-        display: inline-block;
-        margin: 0px 0px 10px 10px;
-        border: $border-canon;
-        -moz-border-radius: $card-border-radius;
-        border-radius: $card-border-radius;
-
-        li {
-            display: block;
-        }
-
+        border-color: $border-color-darkest;
         .name_row {
-            height: 47px;
-            background-color: $greyish-blue;
-            border-top-left-radius: $card-border-radius;
-            -moz-border-radius-topleft: $card-border-radius;
-            border-top-right-radius: $card-border-radius;
-            -moz-border-radius-topleft: $card-border-radius;
-            overflow: hidden;
-        }
-
-        .layer_name {
-            position: absolute;
-            z-index: 999;
-            top: 9px;
-            left: 10px;
-            /* nearly the whole width in order to effect ellipsis */
-            width: 95%;
-        }
-        
-        .project_name {
-            display: block;
-            @include font-primary-link;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            white-space: nowrap;
+            background-color: $card-namelayer_background_highlight;
+            
+            .progress_label {
+                display: inline-block;
+            }
         }
 
         .layer_ambient_progress {
-            position: relative;
-            z-index: 1;
-            top: 0px;
-            left: 0px;
-            width: 100%;
-            height: 100%;
-            
-            .progress_bar {
-                height: 100%;
-            }
-
-            /* special case of progress bar: when there are milestones but 0% progress */
-            div.progress_bar[style="width:0%"] {
-                border-right: 5px dotted $card-progressbar;
+            div[style="width:0%"] {
+                border-color: $card-progressbar_highlight;
                 background-color: transparent;
             }
-            
-            /* normal cases of progress bar: progress > 0% */
             .card {
-                background-color: $card-progressbar;
-            }
-            
-            &.card_on_track,
-            &.card_needs_attention,
-            &.card_at_risk {
+                background-color: $card-progressbar_highlight;
             }
         }
-   
-        .progress_label {
-            display: none;
-            position: relative;
-            float: right;
-            z-index: 10;
-            right: 10px;
-            top: 30px;
-            @include secondary-text-small;
-            cursor: pointer;
-            
-            a {
-                @include secondary-text-small;
-            }
+                    
+        .metrics_row, .insight_row {
+            background-color: #F0F5FF;
         }
-
-        .metrics_row {
-            padding: 10px 10px 13px 10px;            
-            border-bottom: $light-gray 1px solid;
-        }
-
-        .data_row {
-            .left_side {
-                display: inline-block;
-                width: 50%;
-            }
-            .right_side {
-                display: inline-block;
-            }
-            .number {
-                a {
-                    @include dashboardcard-heading;
-                }
-            }
-            .element {
-                @include font-secondary-content;
-                line-height: 14px;
-                margin-bottom: 6px;
-            }
-        }
-
+        
+        .name_row *,
+        .layer_ambient_progress *,
+        .metrics_row,
         .insight_row {
-            height: 35px;
-            padding: 10px 10px 13px 10px;
-            color: $color-text2;
-            
-            .main_row {
-                @include dashboardcard-heading;
-            }
-            
-            .no_comments_or_anything {
-                font-size: 14px;
-                font-weight: normal;
-                color: $color-text4;
-            }
-            
-            .sub_row {
-                @include secondary-text-small;
-            }
-            
-            .has_recent_comments + .sub_row {
-                color: $color-text2;
-            }
+            @include transition-duration(1s);
+            @include transition-timing-function(cubic-bezier(0,0,0,1));
+        }
+    }
+}
+ 
+.dashboard_project_list {
+    margin-left: -10px;
+    
+    .loading_text {
+        margin-left: 10px;
+    }
+}
+ 
+   
+.dashboard_project_card {
+    position: relative;
+    vertical-align: top;
+    display: inline-block;
+    margin: 0px 0px 10px 10px;
+    border: $border-canon;
+    -moz-border-radius: $card-border-radius;
+    border-radius: $card-border-radius;
+
+    li {
+        display: block;
+    }
+
+    .name_row {
+        height: 47px;
+        background-color: $greyish-blue;
+        border-top-left-radius: $card-border-radius;
+        -moz-border-radius-topleft: $card-border-radius;
+        border-top-right-radius: $card-border-radius;
+        -moz-border-radius-topleft: $card-border-radius;
+        overflow: hidden;
+    }
+
+    .layer_name {
+        position: absolute;
+        z-index: 999;
+        top: 9px;
+        left: 10px;
+        /* nearly the whole width in order to effect ellipsis */
+        width: 95%;
+    }
+  
+    .project_name {
+        display: block;
+        @include font-primary-link;
+        @include ellipsis;
+    }
+
+    .layer_ambient_progress {
+        position: relative;
+        z-index: 1;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        
+        .progress_bar {
+            height: 100%;
+        }
+
+        /* special case of progress bar: when there are milestones but 0% progress */
+        div.progress_bar[style="width:0%"] {
+            border-right: 5px dotted $card-progressbar;
+            background-color: transparent;
+        }
+        
+        /* normal cases of progress bar: progress > 0% */
+        .card {
+            background-color: $card-progressbar;
+        }
+        
+        &.card_on_track,
+        &.card_needs_attention,
+        &.card_at_risk {}
+    }
+
+    .progress_label {
+        display: none;
+        position: relative;
+        float: right;
+        z-index: 13;
+        right: 10px;
+        top: 29px;
+        
+        a {
+            @include secondary-text-small;
         }
     }
 
+    .metrics_row {
+        padding: 10px 10px 13px 10px;            
+        border-bottom: $light-gray 1px solid;
+    }
+
+    .data_row {
+        .left_side {
+            display: inline-block;
+            width: 50%;
+        }
+        .right_side {
+            display: inline-block;
+        }
+        .number {
+            a {
+                @include dashboardcard-heading;
+            }
+        }
+        .element {
+            @include font-secondary-content;
+            line-height: 14px;
+            margin-bottom: 6px;
+        }
+    }
+
+    .insight_row {
+        height: 35px;
+        padding: 10px 10px 13px 10px;
+        color: $color-text2;
+        
+        .main_row {
+            @include dashboardcard-heading;
+        }
+        
+        .no_comments_or_anything {
+            font-size: 14px;
+            font-weight: normal;
+            color: $color-text4;
+        }
+        
+        .sub_row {
+            @include secondary-text-small;
+        }
+        
+        .has_recent_comments + .sub_row {
+            color: $color-text2;
+        }
+    }
+}

@@ -1,6 +1,6 @@
 chorus.views.DashboardModuleActivityListHeader = chorus.views.Base.extend({
     constructorName: "DashboardModuleActivityListHeaderView",
-    templateName : "dashboard/dashboard_activity_list_header",
+    templateName : "dashboard/activity_list_header",
     additionalClass: 'list_header',
     persistent: true,
 
@@ -14,7 +14,6 @@ chorus.views.DashboardModuleActivityListHeader = chorus.views.Base.extend({
         }
 
         this.allTitle = this.options.allTitle;
-//         this.insightsTitle = this.options.insightsTitle;
     },
 
     postRender: function() {
@@ -31,10 +30,6 @@ chorus.views.DashboardModuleActivityListHeader = chorus.views.Base.extend({
             iconUrl: this.model && this.model.defaultIconUrl()
         };
     },
-
-//     pickTitle: function() {
-//         return this.collection.attributes.insights ? this.insightsTitle : this.allTitle;
-//     },
 
     reloadCollection: function() {
         this.collection.loaded = false;
