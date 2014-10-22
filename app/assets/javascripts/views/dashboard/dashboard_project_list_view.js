@@ -31,11 +31,9 @@ chorus.views.DashboardProjectList = chorus.views.Base.extend({
 
     postRender: function () {
         // revision inspired by http://ozkatz.github.io/avoiding-common-backbonejs-pitfalls.html
-        var container = document.createDocumentFragment();
-       
-        
-        if (this.projectCards.length) {
 
+        if (this.projectCards.length) {
+            var container = document.createDocumentFragment();
             // render each subview, appending to our root element
             _.each(this.projectCards, function(view) {
     //             this.$el.append(view.render().el);
@@ -43,8 +41,7 @@ chorus.views.DashboardProjectList = chorus.views.Base.extend({
              });
     //         }, this);
             this.$el.append(container);
-        }
-        
+        }  
     },
 
     triggerRender: function (bool) {
