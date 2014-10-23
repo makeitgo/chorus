@@ -39,7 +39,7 @@ chorus.views.DashboardModuleActivityListHeader = chorus.views.Base.extend({
     },
 
     onFilterChange: function(e) {
-//         e && e.preventDefault();
+        e && e.preventDefault();
         this.collection.attributes.insights = this.isInsightsOnly();
         this.reloadCollection();
     },
