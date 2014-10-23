@@ -187,7 +187,7 @@ describe HdfsDataSource do
 
   describe "after being created" do
     before do
-      @new_data_source = HdfsDataSource.create({:owner => User.first, :name => "Hadoop", :host => "localhost", :port => "8020", :hdfs_version => "Pivotal HD 1.0"}, { :without_protection => true })
+      @new_data_source = HdfsDataSource.create({:owner => User.first, :name => "Hadoop", :host => "localhost", :port => "8020", :hdfs_version => "Pivotal HD 1.1"}, { :without_protection => true })
     end
 
     it "creates an HDFS root entry" do

@@ -16,7 +16,7 @@ describe("chorus.collections.ActivitySet", function() {
                 it("returns the url for fetching insights belonging to a workspace", function() {
                     this.collection.attributes.entity = backboneFixtures.workspace({ id: 21 });
                     expect(this.collection.url()).toHaveUrlPath("/insights");
-                    expect(this.collection.url()).toContainQueryParams({entityType : "workspace", entityId: 21});
+                    expect(this.collection.url()).toContainQueryParams({entityType : "workspace", entityId: 21, perPage : 20});
                 });
             });
 

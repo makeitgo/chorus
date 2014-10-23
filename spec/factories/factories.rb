@@ -93,7 +93,7 @@ FactoryGirl.define do
     sequence(:port) { |n| 5000+n }
     sequence(:job_tracker_host) { |n| "job-tracker-host#{n + FACTORY_GIRL_SEQUENCE_OFFSET}.emc.com" }
     sequence(:job_tracker_port) { |n| 10000+n }
-    hdfs_version "Pivotal HD 1.0"
+    hdfs_version "Pivotal HD 1.1"
     high_availability { false }
     owner
   end

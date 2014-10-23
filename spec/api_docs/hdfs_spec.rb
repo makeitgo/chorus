@@ -46,7 +46,7 @@ resource "Hdfs" do
     let(:description) { "Can you tell me how to get..." }
     let(:host) { "sesame.street.local" }
     let(:port) { "8020" }
-    let(:hdfs_version) { "Pivotal HD 1.0" }
+    let(:hdfs_version) { "Pivotal HD 1.1" }
     let(:username) { "big" }
     let(:group_list) { "bird" }
 
@@ -73,7 +73,7 @@ resource "Hdfs" do
     let(:port) { "8121" }
     let(:username) { "donaldd" }
     let(:group_list) { "scroogemcduck" }
-    let(:hdfs_version) { "Pivotal HD 1.0" }
+    let(:hdfs_version) { "Pivotal HD 1.1" }
     let(:id) { data_source.id }
 
     required_parameters :name, :host, :port, :username, :group_list, :hdfs_version

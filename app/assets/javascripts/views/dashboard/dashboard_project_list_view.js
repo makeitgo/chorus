@@ -36,10 +36,10 @@ chorus.views.DashboardProjectList = chorus.views.Base.extend({
             var container = document.createDocumentFragment();
             // render each subview, appending to our root element
             _.each(this.projectCards, function(view) {
-    //             this.$el.append(view.render().el);
+//                  this.$el.append(view.render().el);
                     container.appendChild(view.render().el);
              });
-    //         }, this);
+//         }, this);
             this.$el.append(container);
         }  
     },

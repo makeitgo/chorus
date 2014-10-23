@@ -1,6 +1,7 @@
 chorus.collections.ActivitySet = chorus.collections.Base.extend({
     constructorName: "ActivitySet",
     model: chorus.models.Activity,
+    per_page: 20,
 
     setup: function() {
         this.bind("reset", this.reindexErrors);
