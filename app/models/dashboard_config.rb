@@ -39,4 +39,10 @@ class DashboardConfig
       user.dashboard_items.where(:name => module_name).update_all(:options => option_string)
     end
   end
+
+  def get_options(module_name)
+    User.transaction do
+      user.dashboard_items.where(:name => module_name).select(:options)
+    end
+  end
 end

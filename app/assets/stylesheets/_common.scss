@@ -26,7 +26,7 @@ $bright-grey:       rgb(88, 89, 95);
 $greyish-yellow:    rgb(204, 204, 200);
 $light-grey-yellow: rgb(243, 243, 242);
 $light-gray:        rgb(234, 238, 241);
-$shadow-gray:		darken($light-gray, 7%);
+$shadow-gray:		darken($light-gray, 11%);
 $charcoal:          #464646;
 
 //transparent variants
@@ -91,16 +91,18 @@ $summary-line-height: 19px;
 $default-border-width: 1px;
 $default-border-radius: 3px;
 
+/* global margin for left and right sides of all pages */
 $page-margin-left: 25px;
 $page-margin-right: 25px;
-
+/* global margin for bottom of all pages */
+$page-margin-bottom: 60px;
 
 //Specials
 $border-canon: $default-border-width solid $border-color;
 $dark-border-canon: $default-border-width solid $border-color-dark;
 $strong-border-canon: 5px solid $color-text3;
 
-$shadow-canon: 1px 2px 2px 0px $shadow-color;
+$shadow-canon: 2px 2px 3px 0px $shadow-color;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -193,6 +195,8 @@ $medium-font: 14px;
 $small-font: 12px;
 $smallest-font: 10px;
 
+$fontsize-workspace-name: 16px;
+
 ///////////////////////////////////////////////////////
 // TODO: Reconcile these with above values
 /* Typography */
@@ -279,7 +283,7 @@ $action-bar-secondary-background-color: $light-blue;
     @include debugging-mixin;
     font-size: 24px;
     font-weight: $semibold;
-    color: black;
+    color: $color-text1;
 }
 
 @mixin subheading-normal {
@@ -322,15 +326,23 @@ $action-bar-secondary-background-color: $light-blue;
     @include debugging-mixin;
     font-size: 13px;
     font-weight: normal;
-    color: black;
+    color: #000000;
 }
 
 @mixin font-normal-delta {
     @include debugging-mixin;
     font-size: 14px;
     font-weight: normal;
-    color: black;
+    color: #000000;
 }
+
+@mixin font-normal-gamma {
+    @include debugging-mixin;
+    font-size: 14px;
+    font-weight: $semibold;
+	color: $color-text1;
+}
+
 
 @mixin font-secondary-content {
     @include debugging-mixin;
@@ -647,5 +659,3 @@ $action-bar-secondary-background-color: $light-blue;
 
 // Do not put any css rules into this file.  This file is only for declaration of variables and mixins
 //
-
-

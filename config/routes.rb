@@ -187,6 +187,7 @@ Chorus::Application.routes.draw do
   resource :dashboards, :only => [:show] do
     scope :module => 'dashboards' do
       resource :recent_workfiles, :only => [:create], :controller => 'recent_workfiles'
+      resource :project_card_list, :only => [:create, :show], :controller => 'project_card_list'
     end
   end
 

@@ -8,13 +8,13 @@
 
     border: $border-canon;
     @include border-radius($default-border-radius);
-    
+
     width: 500px;
     margin-left: auto;
     margin-right: auto;
 
     .title {
-    	@include border-top-radius($default-border-radius);
+        @include border-top-radius($default-border-radius);
         background-color: $dialog-header-background;
         padding: 20px;
         font-weight: normal;

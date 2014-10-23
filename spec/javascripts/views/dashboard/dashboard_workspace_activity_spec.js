@@ -56,7 +56,7 @@ describe("chorus.views.DashboardWorkspaceActivity", function() {
             expect(this.qtip).toContainText(layer_ws.summary);
 
             // Expect workspace title to be a link to the workspace
-            expect(this.qtip).toContainHtml('<a href="#workspaces/' + layer_ws.workspaceId + '/quickstart">'  + layer_ws.name + '</a>');
+            expect(this.qtip).toContainHtml('<a href="#workspaces/' + layer_ws.workspaceId + '>'  + layer_ws.name + '</a>');
         });
     });
 
@@ -67,9 +67,11 @@ describe("chorus.views.DashboardWorkspaceActivity", function() {
             this.view.render();
         });
 
-        it("displays no activity message", function () {
+        it("displays no activity message and text tip", function () {
             expect(this.view.vis.entities.chart.domElement).toBe(null);
-            expect(this.view.$(".chart")).toContainTranslation("dashboard.workspace_activity.no_activity.text");
+            expect(this.view.$(".no_activity")).toContainTranslation("dashboard.workspace_activity.no_activity.text");
+            expect(this.view.$(".text_tip")).toContainTranslation("dashboard.workspace_activity.no_activity.text_tip.text");
+            expect(this.view.$(".text_tip a")).toContainTranslation("dashboard.workspace_activity.no_activity.text_tip.link.text");
         });
     });
 });

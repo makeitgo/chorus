@@ -17,8 +17,17 @@ $card-progressbar_zero: rgba(#C0C0C0, 0.5);
 }
 
 .project_list {
+    .show_text {
+        margin-right: 5px;
+    }
+
+    select, .ui-selectmenu-button .ui-button {
+        display: inline-block;
+    }
+
     .menus {
         float: none !important;
+        padding-bottom: 10px;
     }
     
     .dashboard_project_list {
@@ -113,8 +122,9 @@ $card-progressbar_zero: rgba(#C0C0C0, 0.5);
         }
         
         .project_name {
-            display: block;
-            font-size: 18px;
+/*             display: block; */
+            @include font-primary-link;
+/*             font-size: 18px; */
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;

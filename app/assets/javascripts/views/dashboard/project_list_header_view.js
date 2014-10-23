@@ -4,52 +4,46 @@ chorus.views.ProjectListHeader = chorus.views.Base.extend({
     additionalClass: 'list_header',
 
     events: {
-        'click .menus > a': 'triggerCollectionFilter'
+        'change .workspace_filter': 'triggerCollectionFilter'
     },
 
-    setup: function(params) {
-        if(params.state === 'most_active') {
-            this.mostActive = true;
-            this.noFilter = true;
-        }
-        else {
-            this.mostActive = false;
-            if(params.state === 'all') {
-                this.noFilter = true;
-            }
-            else {
-                this.noFilter = false;
-            }
-        }
+    setup: function() {
+        this.projectCardListModel = new chorus.models.ProjectCardList();
+        this.projectCardListModel.fetch({
+            success: _.bind(function() {
+                var value = this.projectCardListModel.get('option');
+                this.list.fillOutContent(value);
+                this.$("select.workspace_filter").val(value);
+                this.$(".title").text(t('header.' + (value === 'members_only' ? 'my_projects' : value + '_projects')));
+            }, this)
+        });
+    },
+
+    postRender: function(e) {
+        _.defer(_.bind(function () {
+            chorus.styleSelect(this.$("select.workspace_filter"));
+        }, this));
     },
 
     triggerCollectionFilter: function (e) {
         e && e.preventDefault();
 
-        this.filterClass = e.target.classList[0];
-        if(this.mostActive) {
-            if(this.filterClass === 'members_only' || this.filterClass === 'all') {
-                this.list.fillOutContent('', this.filterClass);
+        var filterClass = this.$("select.workspace_filter").val();
+        if(this.projectlist.mostActive) {
+            if(filterClass === 'members_only' || filterClass === 'all') {
+                this.list.fillOutContent(filterClass);
             }
         }
         else {
-            if(this.filterClass === 'most_active') {
-                this.list.fillOutContent('most_active', 'most_active');
+            if(filterClass === 'most_active') {
+                this.list.fillOutContent('most_active');
             }
             else {
-                this.mostActive = false;
-                this.noFilter = this.filterClass === 'all';
-                this.projectlist.triggerRender(this.filterClass === 'all');
-                this.render();
+                this.projectlist.triggerRender(filterClass === 'all');
             }
         }
-    },
-
-    additionalContext: function () {
-        return {
-            title: 'header.' + (this.mostActive ? 'most_active_projects' : (this.noFilter ? 'all_projects' : 'my_projects')),
-            noFilter: this.noFilter,
-            mostActive: this.mostActive
-        };
+        this.$("select.workspace_filter").val(filterClass);
+        this.$(".title").text(t('header.' + (this.projectlist.mostActive ? 'most_active_projects' : (this.projectlist.noFilter ? 'all_projects' : 'my_projects'))));
+        this.projectCardListModel.save({optionValue: filterClass});
     }
 });

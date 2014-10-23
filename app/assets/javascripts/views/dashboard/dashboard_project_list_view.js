@@ -5,13 +5,13 @@ chorus.views.DashboardProjectList = chorus.views.Base.extend({
 
     setup: function (params) {
         this.projectCards = [];
-        if(params.state === 'most_active') {
+        if(params.option === 'most_active') {
             this.mostActive = true;
             this.noFilter = true;
         }
         else {
             this.mostActive = false;
-            if(params.state === 'all') {
+            if(params.option === 'all') {
                 this.noFilter = true;
             }
             else {

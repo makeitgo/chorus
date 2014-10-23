@@ -3,10 +3,11 @@
     additionalClass: "project_list",
 
     setup: function () {
-        this.fillOutContent('most_active', 'most_active');
+        this.contentHeader = new chorus.views.ProjectListHeader();
+        this.contentHeader.list = this;
     },
 
-    fillOutContent: function(option, state) {
+    fillOutContent: function(option) {
         var workspaceSet = new chorus.collections.WorkspaceSet();
 
         workspaceSet.attributes.showLatestComments = true;
@@ -18,9 +19,7 @@
         workspaceSet.sortAsc("name");
         workspaceSet.fetchAll();
 
-        this.contentHeader = new chorus.views.ProjectListHeader({ collection: workspaceSet, state: state });
-        this.content = new chorus.views.DashboardProjectList({ collection: workspaceSet, state: state });
-        this.contentHeader.list = this;
+        this.content = new chorus.views.DashboardProjectList({ collection: workspaceSet, option: option });
         this.contentHeader.projectlist = this.content;
         this.render();
     }

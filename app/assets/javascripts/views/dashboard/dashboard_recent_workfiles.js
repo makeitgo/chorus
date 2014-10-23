@@ -59,8 +59,7 @@ chorus.views.DashboardRecentWorkfiles = chorus.views.DashboardModule.extend({
 
     hideOptions: function(event) {
         event.preventDefault();
-        this.$('#recent_workfiles_configuration').fadeOut(140);
-
+        this.$('#recent_workfiles_configuration').fadeOut(100);
     },
 
     saveOptions: function(event) {

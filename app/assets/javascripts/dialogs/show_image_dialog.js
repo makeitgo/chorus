@@ -60,20 +60,19 @@ chorus.dialogs.ShowImage = chorus.dialogs.Base.extend({
             workfileName: this.model.get("fileName")
         });
         alert.redirectUrl = null;
-        alert.launchNewModal();
-        this.attachCloseModalEvent();
+        this.openNewModalWithEvent(alert);
     },
 
     launchRenameDialog: function(e) {
         e && e.preventDefault();
-        new chorus.dialogs.RenameWorkfile({model: this.model}).launchNewModal();
-        this.attachCloseModalEvent();
+        var dialog = new chorus.dialogs.RenameWorkfile({model: this.model});
+        this.openNewModalWithEvent(dialog);
     },
 
     startEditingTags: function(e) {
         e.preventDefault();
-        new chorus.dialogs.EditTags({collection: new chorus.collections.Base([this.model])}).launchNewModal();
-        this.attachCloseModalEvent();
+        var dialog = new chorus.dialogs.EditTags({collection: new chorus.collections.Base([this.model])});
+        this.openNewModalWithEvent(dialog);
     },
 
     launchNotesNewDialog: function(e) {
@@ -85,8 +84,7 @@ chorus.dialogs.ShowImage = chorus.dialogs.Base.extend({
             workspaceId: this.model.workspace().id,
             allowWorkspaceAttachments: true
         });
-        dialog.launchNewModal();
-        this.attachCloseModalEvent();
+        this.openNewModalWithEvent(dialog);
     },
 
     launchCommentNewDialog: function(e) {
@@ -95,8 +93,7 @@ chorus.dialogs.ShowImage = chorus.dialogs.Base.extend({
             pageModel: this.activity,
             eventId: this.activity.id
         });
-        dialog.launchNewModal();
-        this.attachCloseModalEvent();
+        this.openNewModalWithEvent(dialog);
     },
 
     launchCopyWorkfileDialog: function(e) {
@@ -106,16 +103,26 @@ chorus.dialogs.ShowImage = chorus.dialogs.Base.extend({
             workspaceId: this.model.workspace().id,
             activeOnly: true
         });
-        dialog.launchNewModal();
-        this.attachCloseModalEvent();
+        this.openNewModalWithEvent(dialog);
     },
 
     attachCloseModalEvent: function() {
         $(document).one("close.faceboxsuccess", _.bind(function(){
-                this.setup();
-                this.render();
+                if(this.className === 'tab_control') {
+                    this.parentView.setWorkspace(this.parentView.model);
+                }
+                else {
+                    this.setup();
+                    this.render();
+                }
             },
             this.originalModule));
+    },
+
+    openNewModalWithEvent: function(dialog) {
+        this.closeModal();
+        _.defer(dialog.launchModal());
+        this.attachCloseModalEvent();
     }
 
 });

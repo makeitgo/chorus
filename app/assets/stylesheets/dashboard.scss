@@ -1,4 +1,5 @@
 @import "_common";
+@import "components/_button";
 @import "compass/css3/border-radius";
 
 
@@ -9,8 +10,6 @@ $height-button-widgetshell: 25px;
 $dashboard-module-title-height: 35px;
 $dashboard-module-padding: 10px;
 $title-height: $dashboard-module-title-height - $dashboard-module-padding;
-
-
 
 div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
     #guts {
@@ -29,71 +28,6 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
         border: none;
         @include after-clearfix();
     }
-}
-
-.hovercard {
-  width: 300px !important;
-  max-width: 300px !important;
-  min-height: 110px !important;
-
-  background: #ffffff;
-  border-radius: 2px;
-  border: 1px solid #cccccc;
-
-  box-shadow: 2px 2px 2px 0px rgba(51, 52, 55, 0.25);
-  -moz-box-shadow: 2px 2px 2px 0px rgba(51, 52, 55, 0.25);
-  -webkit-box-shadow: 2px 2px 2px 0px rgba(51, 52, 55, 0.25);
-
-  .ui-tooltip-titlebar {
-    a {
-      font-size: 18px;
-      font-family: "Source Sans Pro",Helvetica,Arial,Verdana,sans-serif;
-    }
-    text-align: left;
-    background-color: #ffffff;
-    border: 0;
-    padding: 18px 20px 0 20px;
-
-    .ui-tooltip-icon {
-      border: 0;
-      background: #ffffff;
-      right: 5px;
-      top: 10px;
-
-      .ui-icon-close {
-        width: 15px;
-        height: 15px;
-        font: normal 15px sans-serif;
-      }
-    }
-  }
-
-  .ui-tooltip-content {
-    $footer-height: 35px;
-
-    padding: 5px 20px 20px 20px;
-    font-size: 12px;
-    font-family: "Source Sans Pro",Helvetica,Arial,Verdana,sans-serif;
-    font-weight: lighter;
-    color: #555555;
-    background-color: #ffffff;
-    border: 0;
-    height: 100%;
-    padding-bottom: $footer-height + 5px;
-    min-height: 33px;
-
-    .footer {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      height: $footer-height;
-      width: 100%;
-      background: #F0F7FE;
-      vertical-align: middle;
-      padding-left: 20px;
-      font-weight: bold;
-    }
-  }
 }
 
 .dashboard_module {
@@ -116,6 +50,7 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
 /*         overflow-y: scroll; */
         overflow-y: auto;
     }
+
 
 /* ****** */
 /* widget: site snapshot */
@@ -166,6 +101,9 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
 /* ****** */
 /* widget: workspace activity chart */
 
+/* ****** */
+/* widget: workspace activity chart */
+
     &.dashboard_workspace_activity {
         .chart {
             text-align: center;
@@ -179,6 +117,9 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
     }
 /* END: workspace activity chart */
 
+
+/* ****** */
+/* widget: recent workfiles */
 
 /* ****** */
 /* widget: recent workfiles */
@@ -354,8 +295,9 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
     
 }
 
+/* rules for the recent activity hovering list that is part of the workspace cards */
 .tooltip {
-    width: 350px;
+        
     li.comment {
         .insight_ribbon {
             top: -18px;
@@ -364,4 +306,49 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
             display: inline;
         }
     }
+}
+
+/* workspace chart: card of workspace details that displays on hover */
+$padding-side-canon: 10px;
+$padding-top-canon: 10px;
+$padding-bottom-canon: 10px;
+  
+.hovercard {
+    width: 300px;
+    box-shadow: $shadow-canon;
+    
+	p {
+		margin: 0;
+	}
+
+	.ui-tooltip-content {
+		/* override defaults */
+		padding: 0;
+    	background-color: #FFFFFF;
+    	border-radius: 3px;
+         
+        .name_row {
+			padding: $padding-top-canon $padding-side-canon $padding-bottom-canon $padding-side-canon;
+			background-color: $greyish-blue;
+
+            a {
+                @include font-primary-link;
+                line-height: normal;
+				text-overflow: ellipsis;
+				overflow: hidden;
+				white-space: nowrap;
+				display: block;           
+            }
+        }
+        
+        .summary_row {
+			padding: $padding-top-canon $padding-side-canon $padding-bottom-canon $padding-side-canon;        
+        }
+
+        .activity_metric_row {
+			padding: $padding-top-canon $padding-side-canon $padding-bottom-canon + 5 $padding-side-canon;
+            border-top: 2px dotted $border-color-darkest;
+            @include font-normal-gamma;
+        }
+	}
 }
