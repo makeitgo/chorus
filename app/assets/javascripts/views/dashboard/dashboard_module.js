@@ -14,7 +14,6 @@ chorus.views.DashboardModule = chorus.views.Base.extend({
     },
 
     postRender: function() {
-        if (!this.content)        this.$(".content").addClass("hidden");
-        if (!this.contentFooter)  this.$(".content_footer").addClass("hidden");
+        if (!this.content)  this.$(".content").addClass("hidden");
     }
 });

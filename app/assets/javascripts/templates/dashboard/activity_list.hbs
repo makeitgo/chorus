@@ -1,0 +1,18 @@
+{{#if models.length}}
+    <div class="activity_wrapper">
+    <div class="activity_frame">
+    <ul class="activities"/>
+    {{#if showMoreLink}}
+        <div class="more_items">
+            <a href="#">{{t "activity.more"}}</a>
+        </div>
+    {{/if}}
+    </div>
+    </div>
+{{else}}
+    <div class="empty_state">
+        <div class="empty_message">
+            <p>{{t "dashboard.activity.no_recent"}}</p>
+        </div>
+    </div>
+{{/if}}

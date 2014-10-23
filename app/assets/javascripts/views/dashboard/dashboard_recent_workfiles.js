@@ -26,7 +26,7 @@ chorus.views.DashboardRecentWorkfiles = chorus.views.DashboardModule.extend({
         this.resource = this.collection = new chorus.collections.WorkfileSet(workfiles);
         this.render();
         if (this.$('#recent_workfiles_configuration').is(':visible')) {
-			this.$('#recent_workfiles_configuration').fadeOut(140);
+			this.$('#recent_workfiles_configuration').fadeOut(100);
         }
     },
 
@@ -51,7 +51,6 @@ chorus.views.DashboardRecentWorkfiles = chorus.views.DashboardModule.extend({
         this.$('#recent_workfiles_configuration').fadeIn(180);
 
         _.defer(_.bind(function () {
-//             this.$('#recent_workfiles_configuration .mask').css('height', this.$('#recent_workfiles_main_content').height() + 20 + 'px');
             chorus.styleSelect(this.$(".recent_items_select"));
         }, this));
         this.$(".recent_items_select").val(this.$('#recent_workfiles_main_content li').length);

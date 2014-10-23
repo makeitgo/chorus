@@ -1,12 +1,17 @@
-<div class="title">{{t "dashboard.site_snapshot.name"}}</div>
-<ul>
+<div class="module_header">
+    <div class="title">{{t "dashboard.site_snapshot.name"}}</div>
+</div>
+
+<div class="module_content">
+    <ul>
     {{#each dataItems}}
         <li>
-            <div class="square {{model}}">
+            <div class="squareish {{model}}">
                 <div class="total">{{total}}</div>
                 <div class="model">{{t translation count=total}}</div>
                 <div class="increment">{{t "dashboard.site_snapshot.increment" count=increment operator=operator}}</div>
             </div>
         </li>
     {{/each}}
-</ul>
+    </ul>
+</div>

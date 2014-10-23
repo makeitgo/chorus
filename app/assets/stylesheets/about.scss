@@ -14,7 +14,8 @@
     margin-right: auto;
 
     .title {
-        @include border-top-radius($default-border-radius);
+    	@include border-top-radius($default-border-radius);
+
         background-color: $dialog-header-background;
         padding: 20px;
         font-weight: normal;

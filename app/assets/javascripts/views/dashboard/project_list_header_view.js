@@ -13,8 +13,8 @@ chorus.views.ProjectListHeader = chorus.views.Base.extend({
             success: _.bind(function() {
                 var value = this.projectCardListModel.get('option');
                 this.list.fillOutContent(value);
-                this.$("select.workspace_filter").val(value);
-                this.$(".title").text(t('header.' + (value === 'members_only' ? 'my_projects' : value + '_projects')));
+//                 this.$("select.workspace_filter").val(value);
+//                 this.$(".title").text(t('header.' + (value === 'members_only' ? 'my_projects' : value + '_projects')));
             }, this)
         });
     },
@@ -43,7 +43,7 @@ chorus.views.ProjectListHeader = chorus.views.Base.extend({
             }
         }
         this.$("select.workspace_filter").val(filterClass);
-        this.$(".title").text(t('header.' + (this.projectlist.mostActive ? 'most_active_projects' : (this.projectlist.noFilter ? 'all_projects' : 'my_projects'))));
+//         this.$(".title").text(t('header.' + (this.projectlist.mostActive ? 'most_active_projects' : (this.projectlist.noFilter ? 'all_projects' : 'my_projects'))));
         this.projectCardListModel.save({optionValue: filterClass});
     }
 });

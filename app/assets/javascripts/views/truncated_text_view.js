@@ -31,7 +31,9 @@ chorus.views.TruncatedText = chorus.views.Base.extend({
                 numLines++;
                 this.$(".styled_text").addClass("extra_line");
             }
-
+            
+            // take the original text, and calculate how tall it will render as numLines
+            // compare to heightlimit, and add expandable links if it is greater
             var text = this.$(".original");
             var heightLimit = parseInt(text.css("line-height"), 10) * numLines;
             if (text.height() > heightLimit) {
@@ -54,4 +56,3 @@ chorus.views.TruncatedText = chorus.views.Base.extend({
         window.open($(e.currentTarget).attr("href"));
     }
 });
-
